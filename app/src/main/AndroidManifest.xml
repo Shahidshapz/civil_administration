@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.villageoffie">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".userpackage.UserHome"
+            android:label="@string/title_activity_user_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".userpackage.ViewUser" />
+        <activity android:name=".adminpackage.EditVillage" />
+        <activity android:name=".adminpackage.EditCertificate" />
+        <activity android:name=".adminpackage.ViewCertificates" />
+        <activity android:name=".adminpackage.ViewVillages" />
+        <activity android:name=".adminpackage.AddCertificates" />
+        <activity android:name=".adminpackage.AddVillage" />
+        <activity android:name=".adminpackage.Admin" />
+        <activity android:name=".Others.Register" />
+        <activity android:name=".Others.Login" />
+        <activity android:name=".Others.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

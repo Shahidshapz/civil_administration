@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="Available Certificates" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_file_upload_black_24dp"
+            android:title="Upload Documents" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_message_black_24dp"
+            android:title="Issued Certificates" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_speaker_notes_off_black_24dp"
+            android:title="Rejected Certificates" />
+
+        <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_streetview_black_24dp"
+                android:title="My Documents" />
+
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="My Applications" />
+
+    </group>
+
+</menu>
