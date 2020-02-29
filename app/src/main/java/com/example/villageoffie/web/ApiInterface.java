@@ -4,6 +4,8 @@ import androidx.cardview.widget.CardView;
 
 import com.example.villageoffie.pojo.login;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.pojo.spinnerresponse;
+import com.example.villageoffie.pojo.viewAppli;
 import com.example.villageoffie.pojo.viewcertificate;
 import com.example.villageoffie.pojo.viewdocument;
 import com.example.villageoffie.pojo.viewuser;
@@ -25,7 +27,8 @@ public interface ApiInterface {
     @POST("village.php")
     Call<reg>register(@Field("key") String key, @Field("name") String name,@Field("mobile") String mobile,@Field("address") String address, @Field("age") String age,
                      @Field("village") String village,@Field("taluk") String taluk,@Field("district") String district,@Field("job") String job,
-                     @Field("username") String username,@Field("password") String password,@Field("image") String img);
+                     @Field("username") String username,@Field("password") String password,@Field("image") String img
+    ,@Field("cno") String cno,@Field("cvv") String cvv,@Field("fname") String f,@Field("mname") String m);
 
     @GET("village.php")
     Call<login>getlogin(@Query("key") String key,@Query("username") String username,@Query("password") String password);
@@ -71,16 +74,24 @@ Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query(
     @GET("village.php")
     Call<viewuser>userview(@Query("key") String key,@Query("userid") String id);
 
+
     @FormUrlEncoded
     @POST("village.php")
-    Call<reg>app(@Field("key") String key,@Field("uid") String uid,@Field("cid") String cid,@Field("cname") String name);
+    Call<login>checkuserApproval(@Field("key") String key,@Field("cat") String uid,@Field("appid") String cid,@Field("opinion") String op);
+
+    @FormUrlEncoded
+    @POST("village.php")
+    Call<reg>app(@Field("key") String key,@Field("uid") String uid,@Field("cid") String cid,@Field("cname") String name,@Field("salslip") String sslip,@Field("cdate") String date,@Field("cfee") String fee);
 
     @GET("village.php")
     Call<List<viewuserapplication>>appview(@Query("key") String key,@Query("userid") String id);
 
     @GET("village.php")
     Call<List<viewdocument>>docs(@Query("key") String key,@Query("userid") String uid);
-
+    @GET("village.php")
+    Call<List<spinnerresponse>>spinner(@Query("key") String key);
+    @GET("village.php")
+    Call<viewAppli>getAppli(@Query("key") String key,@Query("userid") String uid,@Query("cid") String cid);
 }
 
 

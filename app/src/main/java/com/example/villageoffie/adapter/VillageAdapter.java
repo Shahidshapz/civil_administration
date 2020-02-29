@@ -53,13 +53,13 @@ String villageid;
     @Override
     public void onBindViewHolder(@NonNull VillageAdapter.VillageViewHolder holder, int position) {
 final viewvillage s=villagelist.get(position);
-holder.vname.setText("Village Name\t:\t"+s.getVName());
-holder.vtaluk.setText("Taluk\t\t\t\t\t:\t"+s.getVTaluk());
-holder.vdistrict.setText("District\t\t\t\t:\t"+s.getVDistrict());
-holder.vstate.setText("State\t\t\t\t\t:\t"+s.getVState());
-holder.vplace.setText("Place\t\t\t\t\t:\t"+s.getVPlace());
-holder.vpin.setText("Pin Number\t:\t"+s.getVPin());
-holder.vmob.setText("Mobile\t\t\t\t\t:\t"+s.getVMobile());
+holder.vname.setText("Village Name\t\t:\t"+s.getVName());
+holder.vtaluk.setText("Taluk\t\t\t\t\t\t\t\t:\t"+s.getVTaluk());
+holder.vdistrict.setText("District\t\t\t\t\t\t\t:\t"+s.getVDistrict());
+holder.vstate.setText("State\t\t\t\t\t\t\t\t:\t"+s.getVState());
+holder.vplace.setText("Place\t\t\t\t\t\t\t\t:\t"+s.getVPlace());
+holder.vpin.setText("Pin Number\t\t\t:\t"+s.getVPin());
+holder.vmob.setText("Mobile\t\t\t\t\t\t\t:\t"+s.getVMobile());
 holder.cardView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

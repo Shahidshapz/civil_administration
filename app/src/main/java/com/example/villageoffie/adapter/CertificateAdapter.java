@@ -31,79 +31,80 @@ import retrofit2.Response;
 
 public class CertificateAdapter extends RecyclerView.Adapter<CertificateAdapter.CertificateViewHolder> {
     Context context;
-    List<viewcertificate>certificatelist;
+    List<viewcertificate> certificatelist;
     String certificateid;
+
     public CertificateAdapter(Context applicationContext, List<viewcertificate> certificatelist) {
-        this.context=applicationContext;
-        this.certificatelist=certificatelist;
+        this.context = applicationContext;
+        this.certificatelist = certificatelist;
     }
 
     @NonNull
     @Override
     public CertificateAdapter.CertificateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.viewcertificate, parent,false);
+        View view = inflater.inflate(R.layout.viewcertificate, parent, false);
         return new CertificateViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CertificateAdapter.CertificateViewHolder holder, int position) {
-final viewcertificate s=certificatelist.get(position);
-holder.cname.setText("Certificate Name\t:\t"+s.getCName());
-holder.req.setText("Requirments\t\t\t\t:\t"+s.getCReq());
-holder.fee.setText("Govt.fee\t\t\t\t\t\t\t:\t"+s.getCFee());
-holder.cardView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
-        alertbox.setMessage("Do you want to modify Certificate details");
-        alertbox.setTitle("warning");
-        alertbox.setPositiveButton("delete", new DialogInterface.OnClickListener() {
+        final viewcertificate s = certificatelist.get(position);
+        holder.cname.setText("Certificate Name\t\t\t:\t" + s.getCName());
+        holder.req.setText("Requirments\t\t\t\t\t\t:\t" + s.getCReq());
+        holder.fee.setText("Govt.fee\t\t\t\t\t\t\t\t\t\t:\t" + s.getCFee());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                certificateid = s.getCId();
-                deletecertificate();
-
-            }
-
-            private void deletecertificate() {
-                ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-                Call<reg> call = apiService.certificatedelete("deletecertificate", certificateid);
-                call.enqueue(new Callback<reg>() {
+            public void onClick(View v) {
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
+                alertbox.setMessage("Do you want to modify Certificate details");
+                alertbox.setTitle("warning");
+                alertbox.setPositiveButton("delete", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onResponse(Call<reg> call, Response<reg> response) {
-                        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
-                      Intent i=new Intent(context, ViewCertificates.class);
-                      context.startActivity(i);
+                    public void onClick(DialogInterface dialog, int which) {
+                        certificateid = s.getCId();
+                        deletecertificate();
+
                     }
 
-                    @Override
-                    public void onFailure(Call<reg> call, Throwable t) {
-                        Toast.makeText(context, t+"", Toast.LENGTH_SHORT).show();
+                    private void deletecertificate() {
+                        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+                        Call<reg> call = apiService.certificatedelete("deletecertificate", certificateid);
+                        call.enqueue(new Callback<reg>() {
+                            @Override
+                            public void onResponse(Call<reg> call, Response<reg> response) {
+                                Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(context, ViewCertificates.class);
+                                context.startActivity(i);
+                            }
+
+                            @Override
+                            public void onFailure(Call<reg> call, Throwable t) {
+                                Toast.makeText(context, t + "", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
-            }
-        });
-        alertbox.setNegativeButton("edit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SharedPreferences sp= context.getSharedPreferences("edit", context.MODE_PRIVATE);
-                SharedPreferences.Editor ed = sp.edit();
-                ed.putString("cname", s.getCName());
-                ed.putString("creq", s.getCReq());
-                ed.putString("cfee", s.getCFee());
-                ed.putString("cid", s.getCId());
-                ed.commit();
-                Intent i = new Intent(context, EditCertificate.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(i);
+                alertbox.setNegativeButton("edit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sp = context.getSharedPreferences("edit", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = sp.edit();
+                        ed.putString("cname", s.getCName());
+                        ed.putString("creq", s.getCReq());
+                        ed.putString("cfee", s.getCFee());
+                        ed.putString("cid", s.getCId());
+                        ed.commit();
+                        Intent i = new Intent(context, EditCertificate.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        context.startActivity(i);
 
 
+                    }
+                });
+                alertbox.show();
             }
         });
-        alertbox.show();
-    }
-});
 
     }
 
@@ -114,15 +115,15 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
     }
 
     public class CertificateViewHolder extends RecyclerView.ViewHolder {
-        TextView cname,req,fee;
+        TextView cname, req, fee;
         CardView cardView;
 
         public CertificateViewHolder(@NonNull View itemView) {
             super(itemView);
-            cname=itemView.findViewById(R.id.cnameview);
-            req=itemView.findViewById(R.id.creqview);
-            fee=itemView.findViewById(R.id.cfeeview);
-            cardView=itemView.findViewById(R.id.cardcertificate);
+            cname = itemView.findViewById(R.id.cnameview);
+            req = itemView.findViewById(R.id.creqview);
+            fee = itemView.findViewById(R.id.cfeeview);
+            cardView = itemView.findViewById(R.id.cardcertificate);
         }
     }
 }

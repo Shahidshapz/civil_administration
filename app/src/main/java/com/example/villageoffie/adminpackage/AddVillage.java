@@ -42,26 +42,46 @@ name=findViewById(R.id.namevill);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
+                if (name.getText().toString().isEmpty()) {
+                    name.setError("Please enter your name");
+                } else if (taluk.getText().toString().isEmpty()) {
+                    taluk.setError("Please enter your taluk");
+                } else if (district.getText().toString().isEmpty()) {
+                    district.setError("Please enter your District");
+                } else if (state.getText().toString().isEmpty()) {
+                    state.setError("Please enter your state");
+                } else if (place.getText().toString().isEmpty()) {
+                    place.setError("Please enter your place");
+                } else if (pinno.getText().toString().isEmpty()) {
+                    pinno.setError("Please enter pincode");
+                } else if (username.getText().toString().isEmpty()) {
+                    username.setError("Please enter your username");
+                } else if (password.getText().toString().isEmpty()) {
+                    password.setError("Please enter your password");
+                } else if (mobile.getText().toString().isEmpty()) {
+                    mobile.setError("Please enter your Mobile number");
+                } else {
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
 
-                Call<reg> call = apiService.addvillage("add_village", name.getText().toString(), taluk.getText().toString(),
-                        district.getText().toString(), state.getText().toString(), place.getText().toString(), pinno.getText().toString()
-                        , mobile.getText().toString(), username.getText().toString(), password.getText().toString());
+                    Call<reg> call = apiService.addvillage("add_village", name.getText().toString(), taluk.getText().toString(),
+                            district.getText().toString(), state.getText().toString(), place.getText().toString(), pinno.getText().toString()
+                            , mobile.getText().toString(), username.getText().toString(), password.getText().toString());
 
-            call.enqueue(new Callback<reg>() {
-                @Override
-                public void onResponse(Call<reg> call, Response<reg> response) {
-                    Toast.makeText(AddVillage.this, response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
-                    Intent i=new Intent(getApplicationContext(), AddVillage.class);
-                    startActivity(i);
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Toast.makeText(AddVillage.this, response.body().getMessage() + "", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), AddVillage.class);
+                            startActivity(i);
+                        }
+
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(AddVillage.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-
-                @Override
-                public void onFailure(Call<reg> call, Throwable t) {
-                    Toast.makeText(AddVillage.this, t+"", Toast.LENGTH_SHORT).show();
-                }
-            });
             }
 
         });

@@ -3,10 +3,31 @@ package com.example.villageoffie.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class viewuser {
+public class viewAppli {
+    @SerializedName("app_id")
+    @Expose
+    private String appId;
     @SerializedName("user_id")
     @Expose
     private String userId;
+    @SerializedName("c_id")
+    @Expose
+    private String cId;
+    @SerializedName("c_name")
+    @Expose
+    private String cName;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("slip")
+    @Expose
+    private String slip;
+    @SerializedName("cdate")
+    @Expose
+    private String cdate;
+    @SerializedName("fee")
+    @Expose
+    private String fee;
     @SerializedName("name")
     @Expose
     private String name;
@@ -46,21 +67,46 @@ public class viewuser {
     @SerializedName("cvv")
     @Expose
     private String cvv;
+    @SerializedName("fname")
+    @Expose
+    private String fname;
+    @SerializedName("mname")
+    @Expose
+    private String mname;
+    @SerializedName("comment")
+    @Expose
+    private String comment;
 
-    public String getCno() {
-        return cno;
+    public String getcId() {
+        return cId;
     }
 
-    public void setCno(String cno) {
-        this.cno = cno;
+    public void setcId(String cId) {
+        this.cId = cId;
     }
 
-    public String getCvv() {
-        return cvv;
+    public String getcName() {
+        return cName;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setcName(String cName) {
+        this.cName = cName;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getUserId() {
@@ -69,6 +115,54 @@ public class viewuser {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getCId() {
+        return cId;
+    }
+
+    public void setCId(String cId) {
+        this.cId = cId;
+    }
+
+    public String getCName() {
+        return cName;
+    }
+
+    public void setCName(String cName) {
+        this.cName = cName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSlip() {
+        return slip;
+    }
+
+    public void setSlip(String slip) {
+        this.slip = slip;
+    }
+
+    public String getCdate() {
+        return cdate;
+    }
+
+    public void setCdate(String cdate) {
+        this.cdate = cdate;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
     }
 
     public String getName() {
@@ -157,6 +251,38 @@ public class viewuser {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getMname() {
+        return mname;
+    }
+
+    public void setMname(String mname) {
+        this.mname = mname;
     }
 
 }

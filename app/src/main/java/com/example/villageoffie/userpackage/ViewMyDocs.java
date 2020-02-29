@@ -34,9 +34,6 @@ RecyclerView recyclerView;
 List<viewdocument>doclist;
 String userid;
 
-    public ViewMyDocs() {
-        // Required empty public constructor
-    }
 
 
     @Override

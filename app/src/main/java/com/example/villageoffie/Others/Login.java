@@ -16,6 +16,7 @@ import com.example.villageoffie.R;
 import com.example.villageoffie.adminpackage.Admin;
 import com.example.villageoffie.pojo.login;
 import com.example.villageoffie.userpackage.UserHome;
+import com.example.villageoffie.village.VillageHome;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -46,37 +47,52 @@ SharedPreferences sp;
         logn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
+                if (unme.getText().toString().isEmpty()) {
+                    unme.setError("Please enter your username");
+                } else if (pwd.getText().toString().isEmpty()) {
+                    pwd.setError("Please enter your password");
+                } else {
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
 
-                Call<login> call = apiService.getlogin("login", unme.getText().toString(), pwd.getText().toString());
-                call.enqueue(new Callback<login>() {
-                    @Override
-                    public void onResponse(Call<login> call, Response<login> response) {
+                    Call<login> call = apiService.getlogin("login", unme.getText().toString(), pwd.getText().toString());
+                    call.enqueue(new Callback<login>() {
+                        @Override
+                        public void onResponse(Call<login> call, Response<login> response) {
 
-                        if (response.body().getMessage().equals("success")) {
-                            if (response.body().getUtype().equals("user")) {
-                                Intent i = new Intent(getApplicationContext(), UserHome.class);
-                                startActivity(i);
+                            if (response.body().getMessage().equals("success")) {
+                                if (response.body().getUtype().equals("user")) {
+                                    Intent i = new Intent(getApplicationContext(), UserHome.class);
+                                    startActivity(i);
+                                    finish();
 
-                            } else if (response.body().getUtype().equals("admin")) {
-                                Intent i = new Intent(getApplicationContext(), Admin.class);
-                                startActivity(i);
+                                } else if (response.body().getUtype().equals("admin")) {
+                                    Intent i = new Intent(getApplicationContext(), Admin.class);
+                                    startActivity(i);
+                                    finish();
+                                } else if (response.body().getUtype().equals("village")) {
+                                    Intent i = new Intent(getApplicationContext(), VillageHome.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            } else {
+                                Toast.makeText(Login.this, "invalid credentials", Toast.LENGTH_SHORT).show();
                             }
+                            SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor ed = sp.edit();
+                            ed.putString("userid", response.body().getUserId());
+                            ed.putString("utype", response.body().getUtype());
+                            ed.commit();
                         }
-                        SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor ed = sp.edit();
-                        ed.putString("userid", response.body().getUserId());
-                        ed.commit();
-                    }
 
-                    @Override
-                    public void onFailure(Call<login> call, Throwable t) {
-                        Toast.makeText(Login.this, t + "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<login> call, Throwable t) {
+                            Toast.makeText(Login.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
+                }
             }
 
         });

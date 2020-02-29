@@ -12,14 +12,7 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_file_upload_black_24dp"
             android:title="Upload Documents" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_message_black_24dp"
-            android:title="Issued Certificates" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_speaker_notes_off_black_24dp"
-            android:title="Rejected Certificates" />
+
 
         <item
                 android:id="@+id/nav_share"

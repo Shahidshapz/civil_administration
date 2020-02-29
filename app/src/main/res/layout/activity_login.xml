@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/save1"
+    android:background="@drawable/bg"
     tools:context=".Others.Login">
 
     <EditText
@@ -15,7 +15,7 @@
         android:background="@drawable/edit"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColorHint="#FFF"
+        android:textColorHint="#000"
         android:hint="\tUsername"
         android:textColor="#FFF"
         android:drawableLeft="@drawable/ic_person_black_24dp"
@@ -34,7 +34,7 @@
         android:background="@drawable/edit"
         android:inputType="textPassword"
         android:hint="\tPassword"
-        android:textColorHint="#FFF"
+        android:textColorHint="#000"
         android:textColor="#FFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

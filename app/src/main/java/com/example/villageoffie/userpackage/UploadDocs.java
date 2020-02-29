@@ -98,7 +98,7 @@ SharedPreferences sp;
         });
 
         String[] values =
-                {"select a document","Aadhar Card","Ration Card","sslc","votersid","Birth certificate","Pancard"};
+                {"select a document","Aadhar Card","Ration Card","SSLC","voters Idcard","Birth certificate","Pancard","Building Tax","Property Tax"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -115,24 +115,32 @@ SelectImage();
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
-             uid = sp.getString("userid", "");
-               // Toast.makeText(getContext(), dname+"\n"+uid+"\n"+encodedImage, Toast.LENGTH_SHORT).show();
+                if (dname.equals("select a document")) {
+                    Toast.makeText(getContext(), "please select a document", Toast.LENGTH_SHORT).show();
+                }
+                else if(!upload.getText().toString().equals("uploaded")){
+                    Toast.makeText(getContext(), "please select a photo", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    SharedPreferences sp = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+                    uid = sp.getString("userid", "");
+                    // Toast.makeText(getContext(), dname+"\n"+uid+"\n"+encodedImage, Toast.LENGTH_SHORT).show();
 
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
-                Call<reg> call = apiService.upload("upload_Documents", uid, dname, encodedImage);
-                call.enqueue(new Callback<reg>() {
-                    @Override
-                    public void onResponse(Call<reg> call, Response<reg> response) {
-                        Toast.makeText(getContext(), "successfully Added", Toast.LENGTH_SHORT).show();
-                    }
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
+                    Call<reg> call = apiService.upload("upload_Documents", uid, dname, encodedImage);
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Toast.makeText(getContext(), "successfully Added", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onFailure(Call<reg> call, Throwable t) {
-                        Toast.makeText(getContext(), t+"", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(getContext(), t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
         return view;

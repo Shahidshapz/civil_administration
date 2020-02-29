@@ -14,12 +14,16 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.pojo.spinnerresponse;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -28,13 +32,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
-    EditText name, age, mob, address, village, taluk, district, job, username, password;
+    EditText name, age, mob, address, job, username, password,cno,cvv,fname,mname;
+    Spinner village, taluk, district;
     Button add, upload;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private Bitmap bitmapProfile = null;
@@ -49,7 +56,8 @@ public class Register extends AppCompatActivity {
     int newHeight = 200;
 
     Matrix matrix;
-
+    List<spinnerresponse> numberlist;
+    String items[];
     Bitmap resizedBitmap;
 
     float scaleWidth;
@@ -59,7 +67,7 @@ public class Register extends AppCompatActivity {
     ByteArrayOutputStream outputStream;
 
     Bitmap bitmap;
-
+String vil,tal,dist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,30 +80,95 @@ public class Register extends AppCompatActivity {
         taluk = findViewById(R.id.talukreg);
         district = findViewById(R.id.disreg);
         job = findViewById(R.id.jobreg);
+        fname = findViewById(R.id.fname);
+        mname = findViewById(R.id.mname);
         username = findViewById(R.id.usrreg);
         password = findViewById(R.id.passreg);
         add = findViewById(R.id.button2);
+        cno = findViewById(R.id.cno);
+        cvv = findViewById(R.id.cvv);
         upload = findViewById(R.id.button5);
+        getspinner();
+        getspinner1();
+        getspinner2();
+        village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                vil=village.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        taluk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tal=taluk.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dist=district.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
+                if (name.getText().toString().isEmpty()) {
+                    name.setError("Please enter your name");
+                } else if (age.getText().toString().isEmpty()) {
+                    age.setError("Please enter your age");
+                } else if (address.getText().toString().isEmpty()) {
+                    address.setError("Please enter your Address");
+                } else if (mob.getText().toString().isEmpty()) {
+                    mob.setError("Please enter your mobile number");
+                } else if (fname.getText().toString().isEmpty()) {
+                    fname.setError("Please enter your fathers name");
+                } else if (mname.getText().toString().isEmpty()) {
+                    mname.setError("Please enter mothers name");
+                } else if (username.getText().toString().isEmpty()) {
+                    username.setError("Please enter your username");
+                } else if (password.getText().toString().isEmpty()) {
+                    password.setError("Please enter your password");
+                } else if (cno.getText().toString().isEmpty()) {
+                    cno.setError("Please enter your card number");
+                } else if (cvv.getText().toString().isEmpty()) {
+                    cvv.setError("Please enter your cvv");
+                } else {
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
 
-                Call<reg> call = apiService.register("user_register", name.getText().toString(), mob.getText().toString(),
-                        address.getText().toString(), age.getText().toString(), village.getText().toString(), taluk.getText().toString(),
-                        district.getText().toString(), job.getText().toString(), username.getText().toString(), password.getText().toString(), encodedImage);
-                call.enqueue(new Callback<reg>() {
-                    @Override
-                    public void onResponse(Call<reg> call, Response<reg> response) {
-                        Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    Call<reg> call = apiService.register("user_register", name.getText().toString(), mob.getText().toString(),
+                            address.getText().toString(), age.getText().toString(), vil, tal,
+                            dist, job.getText().toString(), username.getText().toString(), password.getText().toString(), encodedImage,
+                            cno.getText().toString(), cvv.getText().toString(), fname.getText().toString(), mname.getText().toString());
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            finish();
+                        }
 
-                    @Override
-                    public void onFailure(Call<reg> call, Throwable t) {
-                        Toast.makeText(Register.this, t + "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(Register.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 
@@ -225,5 +298,99 @@ upload.setOnClickListener(new View.OnClickListener() {
             getStringImage(bitmapProfile);
         }
 
+    }
+
+    private void getspinner() {
+      numberlist=new ArrayList<>();
+        final ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+        Call<List<spinnerresponse>> call = apiService.spinner("getspinner");
+        call.enqueue(new Callback<List<spinnerresponse>>() {
+            @Override
+            public void onResponse(Call<List<spinnerresponse>> call, Response<List<spinnerresponse>> response) {
+                numberlist = response.body();
+                Toast.makeText(Register.this, response.body().get(0).getV_name()+"", Toast.LENGTH_SHORT).show();
+                items = new String[numberlist.size()];
+                for (int i = 0; i < numberlist.size(); i++) {
+                    items[i] = numberlist.get(i).getV_name();
+                }
+
+                ArrayAdapter aa = new ArrayAdapter(Register.this, android.R.layout.simple_list_item_1, items);
+                aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //Setting the ArrayAdapter data on the Spinner
+                village.setAdapter(aa);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<spinnerresponse>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getspinner1() {
+        numberlist=new ArrayList<>();
+        final ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+        Call<List<spinnerresponse>> call = apiService.spinner("getspinner1");
+        call.enqueue(new Callback<List<spinnerresponse>>() {
+            @Override
+            public void onResponse(Call<List<spinnerresponse>> call, Response<List<spinnerresponse>> response) {
+                numberlist = response.body();
+                Toast.makeText(Register.this, response.body().get(0).getV_name()+"", Toast.LENGTH_SHORT).show();
+                items = new String[numberlist.size()];
+                for (int i = 0; i < numberlist.size(); i++) {
+                    items[i] = numberlist.get(i).getV_taluk();
+                }
+
+                ArrayAdapter aa = new ArrayAdapter(Register.this, android.R.layout.simple_list_item_1, items);
+                aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //Setting the ArrayAdapter data on the Spinner
+                taluk.setAdapter(aa);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<spinnerresponse>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getspinner2() {
+        numberlist=new ArrayList<>();
+        final ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+        Call<List<spinnerresponse>> call = apiService.spinner("getspinner2");
+        call.enqueue(new Callback<List<spinnerresponse>>() {
+            @Override
+            public void onResponse(Call<List<spinnerresponse>> call, Response<List<spinnerresponse>> response) {
+                numberlist = response.body();
+                Toast.makeText(Register.this, response.body().get(0).getV_name()+"", Toast.LENGTH_SHORT).show();
+                items = new String[numberlist.size()];
+                for (int i = 0; i < numberlist.size(); i++) {
+                    items[i] = numberlist.get(i).getV_district();
+                }
+
+                ArrayAdapter aa = new ArrayAdapter(Register.this, android.R.layout.simple_list_item_1, items);
+                aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //Setting the ArrayAdapter data on the Spinner
+                district.setAdapter(aa);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<spinnerresponse>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
     }
 }

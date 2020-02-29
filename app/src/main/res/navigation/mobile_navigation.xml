@@ -17,17 +17,7 @@
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_upload_docs" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.villageoffie.userpackage.IssuedCertificate"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_issued_certificate" />
 
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.villageoffie.userpackage.RejectedCertificates"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_rejected_certificates" />
 
     <fragment
         android:id="@+id/nav_share"

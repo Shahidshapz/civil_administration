@@ -14,14 +14,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide(); // hide the title bar
+       // getSupportActionBar().hide(); // hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Thread background = new Thread() {
             public void run() {
                 try {
 
-                    sleep(2*1000);
+                    sleep(3*1000);
 
 
                     Intent i=new Intent(getApplicationContext(),Login.class);

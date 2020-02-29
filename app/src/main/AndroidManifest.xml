@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -16,21 +17,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".userpackage.Viewissued"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".village.verifyDocs" />
+        <activity android:name=".village.ViewApplications" />
+        <activity android:name=".village.VillageHome" />
         <activity
             android:name=".userpackage.UserHome"
             android:label="@string/title_activity_user_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".userpackage.ViewUser" />
-        <activity android:name=".adminpackage.EditVillage" />
-        <activity android:name=".adminpackage.EditCertificate" />
-        <activity android:name=".adminpackage.ViewCertificates" />
-        <activity android:name=".adminpackage.ViewVillages" />
-        <activity android:name=".adminpackage.AddCertificates" />
-        <activity android:name=".adminpackage.AddVillage" />
-        <activity android:name=".adminpackage.Admin" />
-        <activity android:name=".Others.Register" />
-        <activity android:name=".Others.Login" />
-        <activity android:name=".Others.MainActivity">
+        <activity
+            android:name=".adminpackage.EditVillage"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.EditCertificate"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.ViewCertificates"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.ViewVillages"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.AddCertificates"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.AddVillage"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".adminpackage.Admin"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Others.Register"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Others.Login"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Others.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
