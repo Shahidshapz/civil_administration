@@ -13,6 +13,7 @@ import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.login;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.village.Validation;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -42,23 +43,23 @@ name=findViewById(R.id.namevill);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText().toString().isEmpty()) {
+                if (name.getText().toString().isEmpty() || !name.getText().toString().matches(Validation.text)) {
                     name.setError("Please enter your name");
-                } else if (taluk.getText().toString().isEmpty()) {
+                } else if (taluk.getText().toString().isEmpty() || !taluk.getText().toString().matches(Validation.text)) {
                     taluk.setError("Please enter your taluk");
-                } else if (district.getText().toString().isEmpty()) {
+                } else if (district.getText().toString().isEmpty()|| !district.getText().toString().matches(Validation.text)) {
                     district.setError("Please enter your District");
-                } else if (state.getText().toString().isEmpty()) {
+                } else if (state.getText().toString().isEmpty()|| !state.getText().toString().matches(Validation.text)) {
                     state.setError("Please enter your state");
-                } else if (place.getText().toString().isEmpty()) {
+                } else if (place.getText().toString().isEmpty() || !place.getText().toString().matches(Validation.text)) {
                     place.setError("Please enter your place");
-                } else if (pinno.getText().toString().isEmpty()) {
+                } else if (pinno.getText().toString().isEmpty() || !pinno.getText().toString().matches(Validation.pin)) {
                     pinno.setError("Please enter pincode");
                 } else if (username.getText().toString().isEmpty()) {
                     username.setError("Please enter your username");
                 } else if (password.getText().toString().isEmpty()) {
                     password.setError("Please enter your password");
-                } else if (mobile.getText().toString().isEmpty()) {
+                } else if (mobile.getText().toString().isEmpty()|| !mobile.getText().toString().matches(Validation.mobile)) {
                     mobile.setError("Please enter your Mobile number");
                 } else {
                     ApiInterface apiService =

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.village.Validation;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -34,9 +35,9 @@ public class AddCertificates extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (certificatename.getText().toString().isEmpty()) {
+                if (certificatename.getText().toString().isEmpty() || !certificatename.getText().toString().matches(Validation.text)) {
                     certificatename.setError("Please enter Certificate name");
-                } else if (certireq.getText().toString().isEmpty()) {
+                } else if (certireq.getText().toString().isEmpty() || !certireq.getText().toString().matches(Validation.text)) {
                     certireq.setError("Please enter Required documents");
                 } else if (certifee.getText().toString().isEmpty()) {
                     certifee.setError("Please enter government fee");

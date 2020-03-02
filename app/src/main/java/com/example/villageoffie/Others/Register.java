@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
 import com.example.villageoffie.pojo.spinnerresponse;
+import com.example.villageoffie.village.Validation;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -127,25 +128,25 @@ String vil,tal,dist;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText().toString().isEmpty()) {
+                if (name.getText().toString().isEmpty()|| !name.getText().toString().matches(Validation.text)) {
                     name.setError("Please enter your name");
                 } else if (age.getText().toString().isEmpty()) {
                     age.setError("Please enter your age");
                 } else if (address.getText().toString().isEmpty()) {
                     address.setError("Please enter your Address");
-                } else if (mob.getText().toString().isEmpty()) {
+                } else if (mob.getText().toString().isEmpty()|| !mob.getText().toString().matches(Validation.mobile)) {
                     mob.setError("Please enter your mobile number");
-                } else if (fname.getText().toString().isEmpty()) {
+                } else if (fname.getText().toString().isEmpty()|| !fname.getText().toString().matches(Validation.text) ) {
                     fname.setError("Please enter your fathers name");
-                } else if (mname.getText().toString().isEmpty()) {
+                } else if (mname.getText().toString().isEmpty() || !mname.getText().toString().matches(Validation.text)) {
                     mname.setError("Please enter mothers name");
                 } else if (username.getText().toString().isEmpty()) {
                     username.setError("Please enter your username");
                 } else if (password.getText().toString().isEmpty()) {
                     password.setError("Please enter your password");
-                } else if (cno.getText().toString().isEmpty()) {
+                } else if (cno.getText().toString().isEmpty() || !cno.getText().toString().matches(Validation.cno)) {
                     cno.setError("Please enter your card number");
-                } else if (cvv.getText().toString().isEmpty()) {
+                } else if (cvv.getText().toString().isEmpty()|| !cvv.getText().toString().matches(Validation.cvv)) {
                     cvv.setError("Please enter your cvv");
                 } else {
                     ApiInterface apiService =
