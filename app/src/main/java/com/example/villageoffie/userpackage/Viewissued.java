@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,16 +36,27 @@ import com.example.villageoffie.village.VillageHome;
 import com.example.villageoffie.village.verifyDocs;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,6 +72,7 @@ public class Viewissued extends AppCompatActivity {
     EditText opinion;
     Button issue, reject;
     private File pdfFile;
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +86,7 @@ public class Viewissued extends AppCompatActivity {
 
         applyfor = findViewById(R.id.applyfor);
         adate = findViewById(R.id.adate);
-        afee = findViewById(R.id.afee);
+       afee = findViewById(R.id.afee);
         aname = findViewById(R.id.aname);
         age = findViewById(R.id.aage);
         address = findViewById(R.id.aaddress);
@@ -86,6 +102,10 @@ public class Viewissued extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                     pd = new ProgressDialog(Viewissued.this);
+                     pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    pd.setMessage("Please wait,when pdf generate completed it will automatically open.");
+                    pd.show();
                     createPdfWrapper();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -94,7 +114,11 @@ public class Viewissued extends AppCompatActivity {
                 }
             }
         });
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
 
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(c);
 
         sp = getSharedPreferences("viewApp", Context.MODE_PRIVATE);
         userid = sp.getString("uid", "");
@@ -104,20 +128,20 @@ public class Viewissued extends AppCompatActivity {
         call.enqueue(new Callback<viewAppli>() {
             @Override
             public void onResponse(Call<viewAppli> call, Response<viewAppli> response) {
-                aname.setText("Applicant name\t\t\t\t\t\t\t:\t" + response.body().getName());
-                age.setText("Age\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getAge());
-                address.setText("Address\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getAddress());
-                village.setText("Village\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getVillage());
-                taluk.setText("Taluk\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getTaluk());
-                district.setText("District\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getDistrict());
+                aname.setText(":\t" + response.body().getName());
+                age.setText(":\t" + response.body().getAge());
+                address.setText(":\t" + response.body().getAddress());
+                village.setText(":\t" + response.body().getVillage());
+                taluk.setText(":\t" + response.body().getTaluk());
+                district.setText(":\t" + response.body().getDistrict());
                 job.setText(response.body().getComment());
                 job1 = response.body().getJob();
-                Mobile.setText("Mobile\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getMobile());
+                Mobile.setText(":\t" + response.body().getMobile());
                 applyfor.setText(response.body().getCName());
-                adate.setText("Date:\t" + response.body().getCdate());
-                afee.setText("Paid Fee\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getFee());
-                mname.setText("Mother's name\t\t\t\t\t\t\t\t:\t" + response.body().getMname());
-                fname.setText("Father's Name\t\t\t\t\t\t\t\t:\t" + response.body().getFname());
+                adate.setText( response.body().getCdate());
+                afee.setText(":\t" + response.body().getFee());
+                mname.setText(":\t" + response.body().getMname());
+                fname.setText(":\t" + response.body().getFname());
                 appid=response.body().getAppId();
 
             }
@@ -205,19 +229,157 @@ public class Viewissued extends AppCompatActivity {
             Log.d("@@", "Created a new directory for PDF");
         }
 
-        pdfFile = new File(docsFolder.getAbsolutePath(),"HelloWorld.pdf");
+        pdfFile = new File(docsFolder.getAbsolutePath(), aname.getText().toString()+"."+applyfor.getText().toString()+".pdf");
         OutputStream output = new FileOutputStream(pdfFile);
         Document document = new Document();
         PdfWriter.getInstance(document, output);
         document.open();
-        document.add(new Paragraph(applyfor.getText().toString()));
 
-        document.close();
-        previewPdf();
 
+        try {
+            document.setPageSize(PageSize.LETTER);
+            document.setMargins(36, 72, 108, 180);
+            document.setMarginMirroring(false);
+            Drawable d = getResources().getDrawable(R.drawable.glogo);
+            BitmapDrawable bitDw = ((BitmapDrawable) d);
+            Bitmap bmp = bitDw.getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            Image image = Image.getInstance(stream.toByteArray());
+            image.setAbsolutePosition(260, 750);
+            image.scaleToFit(850, 80);
+            document.add(image);
+
+            String toptext = "GOVERNMENT OF KERALA";
+            float gfntSize, glineSpacing;
+            gfntSize = 9.7f;
+            glineSpacing = 10f;
+            String textvil =applyfor.getText().toString();
+            Paragraph govttext = new Paragraph(new Phrase(glineSpacing, toptext + Chunk.NEWLINE + Chunk.NEWLINE + textvil,
+                    FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+            govttext.setSpacingAfter(100);
+            govttext.setSpacingBefore(60);
+            govttext.setAlignment(Element.ALIGN_CENTER);
+            govttext.setIndentationLeft(140);
+            govttext.setIndentationRight(100);
+            document.add(govttext);
+
+            //village office text
+
+            try {
+                Drawable qr = getResources().getDrawable(R.drawable.qr);
+                BitmapDrawable qrdrawable = ((BitmapDrawable) qr);
+                Bitmap bitmap = qrdrawable.getBitmap();
+                ByteArrayOutputStream qrstream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, qrstream);
+                Image fimage = Image.getInstance(qrstream.toByteArray());
+                fimage.setAbsolutePosition(40, 650);
+                fimage.scaleToFit(850, 80);
+
+                String date = "Date :"+adate.getText().toString();
+                Paragraph dataparaagraph = new Paragraph(new Phrase(10, date,
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                dataparaagraph.setIndentationLeft(400);
+                dataparaagraph.setSpacingBefore(5);
+                dataparaagraph.setSpacingAfter(20);
+                document.add(dataparaagraph);
+                document.add(fimage);
+                Paragraph name = new Paragraph(new Phrase(10, "Applicant Name\t\t\t\t\t\t\t" + aname.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                name.setSpacingAfter(20);
+                name.setAlignment(Element.ALIGN_CENTER);
+                name.setIndentationLeft(140);
+                name.setIndentationRight(100);
+                document.add(name);
+                Paragraph age1 = new Paragraph(new Phrase(10, "Age\t\t\t\t\t\t\t" + age.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                age1.setSpacingAfter(20);
+                age1.setAlignment(Element.ALIGN_CENTER);
+                age1.setIndentationLeft(140);
+                age1.setIndentationRight(100);
+                document.add(age1);
+                Paragraph add = new Paragraph(new Phrase(10, "Address\t\t\t\t\t\t\t" + address.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                add.setSpacingAfter(20);
+                add.setAlignment(Element.ALIGN_CENTER);
+                add.setIndentationLeft(140);
+                add.setIndentationRight(100);
+                document.add(add);
+                Paragraph f = new Paragraph(new Phrase(10, "Father's name\t\t\t\t\t\t\t" + fname.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                f.setSpacingAfter(20);
+                f.setAlignment(Element.ALIGN_CENTER);
+                f.setIndentationLeft(140);
+                f.setIndentationRight(100);
+                document.add(f);
+                Paragraph m = new Paragraph(new Phrase(10, "Mother's's name\t\t\t\t\t\t\t" + mname.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                m.setSpacingAfter(20);
+                m.setAlignment(Element.ALIGN_CENTER);
+                m.setIndentationLeft(140);
+                m.setIndentationRight(100);
+                document.add(m);
+                Paragraph vil = new Paragraph(new Phrase(10, "Village\t\t\t\t\t\t\t" + village.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                vil.setSpacingAfter(20);
+                vil.setAlignment(Element.ALIGN_CENTER);
+                vil.setIndentationLeft(140);
+                vil.setIndentationRight(100);
+                document.add(vil);
+                Paragraph tal = new Paragraph(new Phrase(10, "Taluk\t\t\t\t\t\t\t" + taluk.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                tal.setSpacingAfter(20);
+
+                tal.setAlignment(Element.ALIGN_CENTER);
+                tal.setIndentationLeft(140);
+                tal.setIndentationRight(100);
+                document.add(tal);
+                Paragraph dis = new Paragraph(new Phrase(10, "District\t\t\t\t\t\t\t" + district.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                dis.setSpacingAfter(20);
+
+                dis.setAlignment(Element.ALIGN_CENTER);
+                dis.setIndentationLeft(140);
+                dis.setIndentationRight(100);
+                document.add(dis);
+                Paragraph com = new Paragraph(new Phrase(10, job.getText().toString(),
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+                com.setSpacingAfter(20);
+                com.setAlignment(Element.ALIGN_CENTER);
+                com.setIndentationLeft(140);
+                com.setIndentationRight(100);
+                document.add(com);
+
+                Drawable sin = getResources().getDrawable(R.drawable.cc);
+                BitmapDrawable qrdrawable1 = ((BitmapDrawable) sin);
+                Bitmap bitmap1 = qrdrawable1.getBitmap();
+                ByteArrayOutputStream qrstream1 = new ByteArrayOutputStream();
+                bitmap1.compress(Bitmap.CompressFormat.PNG, 100, qrstream1);
+                Image fimage1 = Image.getInstance(qrstream1.toByteArray());
+                fimage1.setAbsolutePosition(380, 210);
+                fimage1.scaleToFit(850, 80);
+                document.add(fimage1);
+                Paragraph last = new Paragraph(new Phrase(10, "Digitally Signed By Villege officer ,This Signature is Digitally Verified.This Certificate does not require any seal or manual sign .This certificate has Long validity .for more visit our site:https://www.gov.in",
+                        FontFactory.getFont(FontFactory.COURIER, gfntSize)));
+
+                last.setSpacingBefore(100);
+                last.setSpacingAfter(100);
+                document.add(last);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            document.close();
+            pd.dismiss();
+            previewPdf();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    private void previewPdf() {
+        private void previewPdf() {
 
         PackageManager packageManager = getPackageManager();
         Intent testIntent = new Intent(Intent.ACTION_VIEW);

@@ -1,204 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFF"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="10dp"
         android:padding="10dp"
         tools:context=".village.ViewApplications">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
+
         <ImageView
             android:id="@+id/apic"
-            android:layout_gravity="center"
             android:layout_width="150dp"
-            android:src="@drawable/glogo"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/glogo" />
 
         <TextView
             android:id="@+id/applyfor"
             android:layout_width="match_parent"
-            android:textColor="#f00"
-            android:textSize="25dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Apply for" />
+            android:gravity="center"
+            android:text="Apply for"
+            android:textColor="#f00"
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
 
         <TextView
             android:id="@+id/adate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:layout_marginTop="10dp"
             android:layout_gravity="end"
-            android:gravity="end"
-            android:textSize="15dp"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/afee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:visibility="gone"
-            android:textSize="20dp"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/aname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
             android:layout_marginTop="10dp"
-            android:textSize="15dp"
-            android:text="Apply for" />
+            android:gravity="end"
+            android:text="Apply for"
+            android:textColor="#f00"
+            android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/aage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Apply for" />
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Applicant Name"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:visibility="visible" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Age"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Father's Name"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mother's Name"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:text="Address"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Village"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Taluk"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="District"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/afee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/aname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/aage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/afname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/amname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/amobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/aaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/avillage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/ataluk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/adist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/afname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/amname"
-            android:layout_width="match_parent"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/amobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/aaddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/avillage"
-            android:layout_width="match_parent"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/ataluk"
-            android:layout_width="match_parent"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:text="Apply for" />
-
-        <TextView
-            android:id="@+id/adist"
-            android:layout_width="match_parent"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:text="Apply for" />
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
 
         <TextView
             android:id="@+id/ajob"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Apply for"
             android:textColor="#f00"
             android:textSize="15dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apply for" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-        <ImageView
+            <ImageView
 
-            android:layout_width="100dp"
-          android:src="@drawable/qr"
-            android:layout_height="100dp" />
-        <ImageView
-            android:layout_width="100dp"
-            android:src="@drawable/tick"
-            android:layout_marginLeft="150dp"
-            android:layout_height="100dp" />
-    </LinearLayout>
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/qr" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@drawable/cc" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/adoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:gravity="end"
-            android:textSize="15dp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Digitally Signed By Villege officer\nThis Signature is Digitally Verified.This Certificate does not require any seal or manual sign"
             android:textColor="#1E06F0"
-            android:text="Digital Signature\nDigitally Verified" />
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:visibility="gone"
-            android:inputType="textMultiLine"
+            android:background="@drawable/edit1"
             android:hint="opinion"
-            android:background="@drawable/edit1"/>
+            android:inputType="textMultiLine"
+            android:visibility="gone" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:visibility="gone"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
 
             <Button
                 android:id="@+id/btnrej"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reject"
                 android:layout_margin="10dp"
+                android:background="@drawable/button"
                 android:padding="10dp"
-                android:background="@drawable/button"/>
+                android:text="Reject" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btnissue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generate PDF"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:padding="10dp"
-            android:background="@drawable/button"/>
+            android:text="Generate PDF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"></TextView>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -58,9 +58,9 @@ public class ViewUser extends AppCompatActivity {
     String encodedImage = "", qrstring = "";
     int t1 = 0;
     private static int RESULT_LOAD_IMAGE = 1;
-    int newWidth = 200;
+    int newWidth = 500;
 
-    int newHeight = 200;
+    int newHeight = 500;
 
     Matrix matrix;
 
@@ -103,7 +103,7 @@ String job1;
         sp1=getSharedPreferences("certificate", Context.MODE_PRIVATE);
         SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
         userid = sp.getString("userid", "");
-        amt.setText("Certificate Fee\t:\t"+sp1.getString("amount",""));
+        amt.setText(":"+sp1.getString("amount",""));
         cname = sp1.getString("cname", "");
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
@@ -112,16 +112,16 @@ String job1;
             @Override
             public void onResponse(Call<viewuser> call, Response<viewuser> response) {
                 name.setText(response.body().getName());
-                age.setText("Age\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getAge());
-                address.setText("Address\t\t\t\t\t:\t" + response.body().getAddress());
-                village.setText("Village\t\t\t\t\t\t\t\t:\t" + response.body().getVillage());
-                taluk.setText("Taluk\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getTaluk());
-                district.setText("District\t\t\t\t\t\t\t:\t" + response.body().getDistrict());
-                job.setText("Job\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getJob());
+                age.setText(":"+response.body().getAge());
+                address.setText(":"+ response.body().getAddress());
+                village.setText( ":"+response.body().getVillage());
+                taluk.setText( ":"+response.body().getTaluk());
+                district.setText(":"+ response.body().getDistrict());
+                job.setText( ":"+response.body().getJob());
                 job1=response.body().getJob();
-                Mobile.setText("Mobile\t\t\t\t\t\t\t:\t" + response.body().getMobile());
-                cno.setText("Card number\t\t\t:\t" + response.body().getCno());
-                cvv.setText("cvv\t\t\t\t\t:\t" + response.body().getCvv());
+                Mobile.setText(":"+ response.body().getMobile());
+                cno.setText(":"+ response.body().getCno());
+                cvv.setText(":"+ response.body().getCvv());
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] imageBytes = baos.toByteArray();
                 imageBytes = Base64.decode(response.body().getImage(), Base64.DEFAULT);
@@ -147,15 +147,16 @@ String job1;
             @Override
             public void onClick(View v) {
                // Toast.makeText(ViewUser.this, job.getText().toString()+"", Toast.LENGTH_SHORT).show();
-                if(cname.equals("Income Certificate")) {
-                    if (job1.trim().equals("Private") || job1.trim().equals("private")
-                            || job1.trim().equals("Government") || job1.trim().equals("government")) {
+                if ((job1.trim().equals("Private") || job1.trim().equals("private")
+                        || job1.trim().equals("Government") || job1.trim().equals("government")) && cname.equals("Income Certificate")) {
+
+
                         if (!pload.getText().toString().equals("uploaded")) {
                             Toast.makeText(ViewUser.this, "please upload your salary slip", Toast.LENGTH_SHORT).show();
                         } else {
                             apply();
                         }
-                    }
+
                 }else {
 
                     apply();

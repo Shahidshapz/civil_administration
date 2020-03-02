@@ -17,6 +17,14 @@ public class viewdocument {
     @Expose
     private String document;
 
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
     public String getDocId() {
         return docId;
     }

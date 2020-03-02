@@ -104,20 +104,20 @@ public class ViewApplications extends AppCompatActivity {
         call.enqueue(new Callback<viewAppli>() {
             @Override
             public void onResponse(Call<viewAppli> call, Response<viewAppli> response) {
-                aname.setText("Applicant name\t\t\t\t\t\t\t:\t" + response.body().getName());
-                age.setText("Age\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getAge());
-                address.setText("Address\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getAddress());
-                village.setText("Village\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getVillage());
-                taluk.setText("Taluk\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getTaluk());
-                district.setText("District\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getDistrict());
-                job.setText("Job\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getJob());
+                aname.setText(":\t" + response.body().getName());
+                age.setText(":\t" + response.body().getAge());
+                address.setText(":\t" + response.body().getAddress());
+                village.setText(":\t" + response.body().getVillage());
+                taluk.setText(":\t" + response.body().getTaluk());
+                district.setText(":\t" + response.body().getDistrict());
+                job.setText(":\t" + response.body().getJob());
                 job1 = response.body().getJob();
-                Mobile.setText("Mobile\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getMobile());
-                applyfor.setText("Applied for\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getCName());
-                adate.setText("Applied Date\t\t\t\t\t\t\t\t\t:\t" + response.body().getCdate());
-                afee.setText("Paid Fee\t\t\t\t\t\t\t\t\t\t\t\t\t:\t" + response.body().getFee());
-                mname.setText("Mother's name\t\t\t\t\t\t\t\t:\t" + response.body().getMname());
-                fname.setText("Father's Name\t\t\t\t\t\t\t\t:\t" + response.body().getFname());
+                Mobile.setText(":\t" + response.body().getMobile());
+                applyfor.setText(":\t" + response.body().getCName());
+                adate.setText(":\t" + response.body().getCdate());
+                afee.setText(":\t" + response.body().getFee());
+                mname.setText(":\t" + response.body().getMname());
+                fname.setText(":\t" + response.body().getFname());
                 appid=response.body().getAppId();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] imageBytes = baos.toByteArray();

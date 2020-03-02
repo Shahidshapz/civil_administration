@@ -51,9 +51,9 @@ public class Register extends AppCompatActivity {
     String encodedImage = "", qrstring = "";
     int t1 = 0;
     private static int RESULT_LOAD_IMAGE = 1;
-    int newWidth = 200;
+    int newWidth = 500;
 
-    int newHeight = 200;
+    int newHeight = 500;
 
     Matrix matrix;
     List<spinnerresponse> numberlist;

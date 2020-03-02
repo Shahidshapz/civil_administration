@@ -57,9 +57,9 @@ SharedPreferences sp;
     String encodedImage = "", qrstring = "";
     int t1 = 0;
     private static int RESULT_LOAD_IMAGE = 1;
-    int newWidth = 200;
+    int newWidth = 500;
 
-    int newHeight = 200;
+    int newHeight = 500;
 
     Matrix matrix;
 
@@ -132,7 +132,7 @@ SelectImage();
                     call.enqueue(new Callback<reg>() {
                         @Override
                         public void onResponse(Call<reg> call, Response<reg> response) {
-                            Toast.makeText(getContext(), "successfully Added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
