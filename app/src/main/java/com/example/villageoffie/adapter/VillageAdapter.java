@@ -53,8 +53,8 @@ String villageid;
     @Override
     public void onBindViewHolder(@NonNull VillageAdapter.VillageViewHolder holder, int position) {
 final viewvillage s=villagelist.get(position);
-holder.vname.setText("Village Name\t\t:\t"+s.getVName());
-holder.vtaluk.setText("Taluk\t\t\t\t\t\t\t\t:\t"+s.getVTaluk());
+holder.vname.setText("Officer Name\t\t:\t"+s.getVName());
+holder.vtaluk.setText("Designation\t\t\t:\t"+s.getVTaluk());
 holder.vdistrict.setText("District\t\t\t\t\t\t\t:\t"+s.getVDistrict());
 holder.vstate.setText("State\t\t\t\t\t\t\t\t:\t"+s.getVState());
 holder.vplace.setText("Place\t\t\t\t\t\t\t\t:\t"+s.getVPlace());

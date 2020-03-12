@@ -123,34 +123,34 @@ public class Viewissued extends AppCompatActivity {
         sp = getSharedPreferences("viewApp", Context.MODE_PRIVATE);
         userid = sp.getString("uid", "");
         cid = sp.getString("cid", "");
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<viewAppli> call = apiService.getAppli("villageviewApplications", userid, cid);
-        call.enqueue(new Callback<viewAppli>() {
-            @Override
-            public void onResponse(Call<viewAppli> call, Response<viewAppli> response) {
-                aname.setText(":\t" + response.body().getName());
-                age.setText(":\t" + response.body().getAge());
-                address.setText(":\t" + response.body().getAddress());
-                village.setText(":\t" + response.body().getVillage());
-                taluk.setText(":\t" + response.body().getTaluk());
-                district.setText(":\t" + response.body().getDistrict());
-                job.setText(response.body().getComment());
-                job1 = response.body().getJob();
-                Mobile.setText(":\t" + response.body().getMobile());
-                applyfor.setText(response.body().getCName());
-                adate.setText( response.body().getCdate());
-                afee.setText(":\t" + response.body().getFee());
-                mname.setText(":\t" + response.body().getMname());
-                fname.setText(":\t" + response.body().getFname());
-                appid=response.body().getAppId();
-
-            }
-
-            @Override
-            public void onFailure(Call<viewAppli> call, Throwable t) {
-
-            }
-        });
+//        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+//        Call<viewAppli> call = apiService.getAppli("villageviewApplications", userid, cid);
+//        call.enqueue(new Callback<viewAppli>() {
+//            @Override
+//            public void onResponse(Call<viewAppli> call, Response<viewAppli> response) {
+//                aname.setText(":\t" + response.body().getName());
+//                age.setText(":\t" + response.body().getAge());
+//                address.setText(":\t" + response.body().getAddress());
+//                village.setText(":\t" + response.body().getVillage());
+//                taluk.setText(":\t" + response.body().getTaluk());
+//                district.setText(":\t" + response.body().getDistrict());
+//                job.setText(response.body().getComment());
+//                job1 = response.body().getJob();
+//                Mobile.setText(":\t" + response.body().getMobile());
+//                applyfor.setText(response.body().getCName());
+//                adate.setText( response.body().getCdate());
+//                afee.setText(":\t" + response.body().getFee());
+//                mname.setText(":\t" + response.body().getMname());
+//                fname.setText(":\t" + response.body().getFname());
+//                appid=response.body().getAppId();
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<viewAppli> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 

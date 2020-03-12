@@ -1,68 +1,97 @@
 package com.example.villageoffie.village;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
-import com.example.villageoffie.adapter.AppAdapter;
-import com.example.villageoffie.pojo.viewuserapplication;
-import com.example.villageoffie.web.ApiClient;
-import com.example.villageoffie.web.ApiInterface;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class VillageHome extends AppCompatActivity {
-    RecyclerView recyclerView;
-    List<viewuserapplication> applist;
-    String userid;
-    SharedPreferences sp;
+    TextView vbp, vtl,vbcer,vdcer,vmrg,vbtax,vptax;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_village_home);
-        recyclerView=findViewById(R.id.viewAppli);
-        applist=new ArrayList<>();
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        vbp = findViewById(R.id.Vbp);
+        vtl = findViewById(R.id.vtl);
+        vbcer = findViewById(R.id.bcer);
+        vdcer = findViewById(R.id.dcer);
+        vmrg = findViewById(R.id.vmrg);
+        vbtax = findViewById(R.id.btax);
+        vptax = findViewById(R.id.ptax);
 
-        final ApiInterface apiService =
-
-                ApiClient.getClient().create(ApiInterface.class);
         SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
-        userid = sp.getString("userid", "");
-        Call<List<viewuserapplication>> call=apiService.appview("villageview",userid);
-        call.enqueue(new Callback<List<viewuserapplication>>() {
+        String type=sp.getString("utype","");
+if(type.equals("Permission_Approval_officer")){
+    vbp.setVisibility(View.VISIBLE);
+    vtl.setVisibility(View.VISIBLE);
+}
+      else  if(type.equals("Certificate_Approval_officer")){
+    vbcer.setVisibility(View.VISIBLE);
+    vdcer.setVisibility(View.VISIBLE);
+    vmrg.setVisibility(View.VISIBLE);
+        }
+       else if(type.equals("Tax_approving_officer")){
+    vbtax.setVisibility(View.VISIBLE);
+    vptax.setVisibility(View.VISIBLE);
+        }
+
+        vbp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<viewuserapplication>> call, Response<List<viewuserapplication>> response) {
-                applist=response.body();
-                AppAdapter AA=new AppAdapter(getApplicationContext(),applist);
-                recyclerView.setAdapter(AA);
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Appliedlist.class));
             }
-
+        });
+        vtl.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<List<viewuserapplication>> call, Throwable t) {
-
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+            }
+        });
+        vbcer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+            }
+        });
+        vdcer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+            }
+        });
+        vmrg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+            }
+        });
+        vbtax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+            }
+        });
+        vptax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
             }
         });
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -82,6 +111,7 @@ public class VillageHome extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "please logout", Toast.LENGTH_SHORT).show();

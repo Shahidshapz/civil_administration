@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:textColor="#880303"
+            android:text="Send your feedBack" />
+
+        <EditText
+            android:id="@+id/rfname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:background="@drawable/edit1"
+            android:inputType="textPersonName"
+            android:hint="user name" />
+
+        <EditText
+            android:id="@+id/rfeedback"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:ems="10"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edit1"
+            android:inputType="textMultiLine"
+            android:hint="Write your review**" />
+
+        <Button
+            android:id="@+id/rfreg"
+            android:layout_width="wrap_content"
+            android:background="@drawable/edit"
+            android:layout_height="wrap_content"
+            android:text="Send" />
+
+    </LinearLayout>
+
+</FrameLayout>

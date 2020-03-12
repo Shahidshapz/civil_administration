@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".userpackage.BirtCer">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Application for Death certificate"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="#000"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/cname"
+            android:hint="Died person Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/sex"
+            android:hint="Sex (male/female)"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dob"
+            android:hint="Date of Birth"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/time"
+            android:hint="Date of death"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/place"
+            android:hint="Place of Death"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dtime"
+            android:hint="Time of Death"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dreason"
+            android:hint="Reason for Death"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dor"
+            android:hint="Date of Registration"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/mname"
+            android:hint="Mother's Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/fname"
+            android:hint="Father's name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/address"
+            android:inputType="textImeMultiLine"
+            android:hint="Address"
+            android:layout_margin="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit1"
+            android:id="@+id/btnapply"
+            android:layout_gravity="center"
+            android:hint="Apply"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

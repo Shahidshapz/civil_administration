@@ -51,12 +51,10 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AppAdapter.AppViewHolder holder, int position) {
         final viewuserapplication s = applist.get(position);
-        holder.name.setText("Applied For\t:\t" + s.getCName());
+        holder.name.setText("Applicant Name\t:\t" + s.getName());
         if (s.getStatus().equals("0")) {
             holder.status.setText("Status    : Pending");
-            SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-            if (sp.getString("utype", "").equals("village")) {
-                holder.cv.setOnClickListener(new View.OnClickListener() {
+               holder.cv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
@@ -67,8 +65,16 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
                             public void onClick(DialogInterface dialog, int which) {
                                 SharedPreferences sp = context.getSharedPreferences("viewApp", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor ed = sp.edit();
-                                ed.putString("cid", s.getCId());
-                                ed.putString("uid", s.getUserId());
+                                ed.putString("bid", s.getBuildingid());
+                                ed.putString("oname", s.getOname());
+                                ed.putString("rooms", s.getNrooms());
+                                ed.putString("sqft", s.getSqft());
+                                ed.putString("address", s.getAddress());
+                                ed.putString("adate", s.getAdate());
+                                ed.putString("uname", s.getName());
+                                ed.putString("umobile", s.getMobile());
+                                ed.putString("pic", s.getImage());
+                                ed.putString("uid", s.getUid());
                                 ed.commit();
                                 Intent i = new Intent(context, ViewApplications.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -90,7 +96,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
                     }
                 });
             }
-        } else if (s.getStatus().equals("1")) {
+         else if (s.getStatus().equals("1")) {
             holder.status.setText("Status    : Approved");
             SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
             if (sp.getString("utype", "").equals("user")) {
@@ -105,8 +111,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
                             public void onClick(DialogInterface dialog, int which) {
                                 SharedPreferences sp = context.getSharedPreferences("viewApp", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor ed = sp.edit();
-                                ed.putString("cid", s.getCId());
-                                ed.putString("uid", s.getUserId());
+//                                ed.putString("cid", s.getCId());
+//                                ed.putString("uid", s.getUserId());
                                 ed.commit();
                                 Intent i = new Intent(context, Viewissued.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

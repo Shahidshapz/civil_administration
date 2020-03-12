@@ -70,7 +70,17 @@ SharedPreferences sp;
                                     Intent i = new Intent(getApplicationContext(), Admin.class);
                                     startActivity(i);
                                     finish();
-                                } else if (response.body().getUtype().equals("village")) {
+                                } else if (response.body().getUtype().equals("Permission_Approval_officer")) {
+                                    Intent i = new Intent(getApplicationContext(), VillageHome.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                                else if (response.body().getUtype().equals("Certificate_Approval_officer")) {
+                                    Intent i = new Intent(getApplicationContext(), VillageHome.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                                else if (response.body().getUtype().equals("Tax_approving_officer")) {
                                     Intent i = new Intent(getApplicationContext(), VillageHome.class);
                                     startActivity(i);
                                     finish();
@@ -82,6 +92,7 @@ SharedPreferences sp;
                             SharedPreferences.Editor ed = sp.edit();
                             ed.putString("userid", response.body().getUserId());
                             ed.putString("utype", response.body().getUtype());
+                            ed.putString("uname", response.body().getUname());
                             ed.commit();
                         }
 

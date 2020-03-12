@@ -7,20 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".adminpackage.AddCertificates">
 
-    <EditText
+    <Spinner
         android:id="@+id/certiname"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edit1"
+        android:background="@drawable/shape"
         android:layout_marginTop="76dp"
         android:ems="10"
         android:padding="10dp"
         android:textColorHint="#000"
         android:textColor="#000"
         android:hint="Certificate Name"
-        android:inputType="textPersonName"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

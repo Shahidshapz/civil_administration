@@ -24,74 +24,116 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<reg>register(@Field("key") String key, @Field("name") String name,@Field("mobile") String mobile,@Field("address") String address, @Field("age") String age,
-                     @Field("village") String village,@Field("taluk") String taluk,@Field("district") String district,@Field("job") String job,
+                    @Field("job") String job,
                      @Field("username") String username,@Field("password") String password,@Field("image") String img
     ,@Field("cno") String cno,@Field("cvv") String cvv,@Field("fname") String f,@Field("mname") String m);
 
-    @GET("village.php")
+    @GET("civil.php")
     Call<login>getlogin(@Query("key") String key,@Query("username") String username,@Query("password") String password);
 
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<reg>addvillage(@Field("key") String key,@Field("vname") String vname,@Field("vtaluk") String vtaluk,@Field("vdistrict") String vdistrict, @Field("vstate") String vstate,
     @Field("vplace") String vplace,@Field("vpin") String pin,@Field("vmobile") String mob,
     @Field("vusername") String vusername,@Field("vpassword") String vpassword);
 
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<reg>addcertificate(@Field("key") String key,@Field("cname") String cname,@Field("creq") String creq,@Field("cfee") String cfee);
 
-@GET("village.php")
+@GET("civil.php")
     Call<List<viewvillage>>villageview(@Query("key") String key);
 
-    @GET("village.php")
+    @GET("civil.php")
     Call<List<viewcertificate>>certificateview(@Query("key") String key);
 
 
-    @GET("village.php")
+    @GET("civil.php")
     Call<reg>certificatedelete(@Query("key") String key,@Query("cid") String id);
 
-@GET("village.php")
+@GET("civil.php")
 Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query("cname") String name,@Query("creq") String req,@Query("cfee") String fee);
 
-    @GET("village.php")
+    @GET("civil.php")
     Call<reg>villagedelete(@Query("key") String key,@Query("vid") String id);
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<reg>villageedit(@Field("key") String key,@Field("vid") String id,@Field("vname") String name,@Field("vtaluk") String taluk,@Field("vdistrict") String dis
             ,@Field("vstate") String state,@Field("vplace") String place,@Field("vpin") String pin,@Field("vmob") String mob);
 
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<reg>upload(@Field("key") String key,@Field("uid") String id,@Field("dname") String name,@Field("doc") String doc);
 
-    @GET("village.php")
+    @GET("civil.php")
     Call<viewuser>userview(@Query("key") String key,@Query("userid") String id);
 
 
     @FormUrlEncoded
-    @POST("village.php")
+    @POST("civil.php")
     Call<login>checkuserApproval(@Field("key") String key,@Field("cat") String uid,@Field("appid") String cid,@Field("opinion") String op);
 
     @FormUrlEncoded
-    @POST("village.php")
-    Call<reg>app(@Field("key") String key,@Field("uid") String uid,@Field("cid") String cid,@Field("cname") String name,@Field("salslip") String sslip,@Field("cdate") String date,@Field("cfee") String fee);
+    @POST("civil.php")
+    Call<reg>applicatin(@Field("key") String key,@Field("uid")String uid,
+                 @Field("name") String cid,@Field("sex") String name,
+                 @Field("dob") String sslip,@Field("btime") String date
+            ,@Field("place") String fee,@Field("dor") String dor,@Field("mname") String mname,
+                 @Field("fname") String fname,@Field("address") String addr);
 
-    @GET("village.php")
-    Call<List<viewuserapplication>>appview(@Query("key") String key,@Query("userid") String id);
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<reg>applicatin1(@Field("key") String key,@Field("uid")String uid,
+                        @Field("name") String cid,@Field("sex") String name,
+                        @Field("dob") String sslip,@Field("btime") String date
+            ,@Field("place") String fee,@Field("dor") String dor,@Field("mname") String mname,
+                        @Field("fname") String fname,@Field("address") String addr,@Field("dtime") String dtime,
+                         @Field("dreason") String re);
 
-    @GET("village.php")
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<reg>applicatin2(@Field("key") String key,@Field("uid")String uid,
+                         @Field("name") String cid,@Field("sex") String name,
+                         @Field("dob") String sslip,@Field("btime") String date
+            ,@Field("place") String fee,@Field("dor") String dor,@Field("mname") String mname,
+                         @Field("fname") String fname,@Field("nationality") String addr,@Field("job") String dtime,
+                         @Field("address") String re,
+                         @Field("wname") String wname,@Field("wsex") String wsex,@Field("wdob") String wdob,
+                         @Field("wmname") String wmname, @Field("wfname") String wfname,@Field("wnationality") String wnnaddr,@Field("wjob") String dwtime,
+                         @Field("waddress") String wre,@Field("hpic") String whpicre,@Field("wpic") String wpic);
+
+
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<reg>applicatin3(@Field("key") String key,@Field("uid")String uid,
+                        @Field("oname") String cid,@Field("nrooms") String name,
+                        @Field("sqft") String sslip,@Field("address") String date,@Field("adate") String date2);
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<reg>applicatin4(@Field("key") String key,@Field("uid")String uid,@Field("sname")String uid1,
+                         @Field("spur") String cid,@Field("sowner") String name,
+                         @Field("swno") String sslip,@Field("sbno") String date,@Field("saddress") String dat2e,@Field("adate") String date2);
+
+
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<login> getfeedback(@Field("key") String token,@Field("rname") String type,
+                                  @Field("rfeed") String userid1, @Field("date") String date);
+    @GET("civil.php")
+    Call<List<viewuserapplication>>appview(@Query("key") String key);
+
+    @GET("civil.php")
     Call<List<viewdocument>>docs(@Query("key") String key,@Query("userid") String uid);
-    @GET("village.php")
+    @GET("civil.php")
     Call<List<spinnerresponse>>spinner(@Query("key") String key);
-    @GET("village.php")
-    Call<viewAppli>getAppli(@Query("key") String key,@Query("userid") String uid,@Query("cid") String cid);
+    @GET("civil.php")
+    Call<viewAppli>getAppli(@Query("key") String key);
 }
 
 

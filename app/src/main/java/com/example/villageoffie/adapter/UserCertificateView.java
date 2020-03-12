@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.viewcertificate;
 import com.example.villageoffie.userpackage.AvailableCertificate;
+import com.example.villageoffie.userpackage.BirtCer;
+import com.example.villageoffie.userpackage.DeathCer;
+import com.example.villageoffie.userpackage.MarrigeCer;
 import com.example.villageoffie.userpackage.ViewUser;
 
 import java.net.UnknownServiceException;
@@ -65,14 +68,32 @@ public class UserCertificateView extends RecyclerView.Adapter<UserCertificateVie
                 alertbox.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences sp = context.getSharedPreferences("certificate", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor ed = sp.edit();
-                        ed.putString("cid", s.getCId());
-                        ed.putString("cname", s.getCName());
-                        ed.putString("amount", s.getCFee());
-                        ed.commit();
-                        Intent i = new Intent(context, ViewUser.class);
-                        context.startActivity(i);
+
+                        if(s.getCName().equals("Birth Certificate")){
+                            Intent i = new Intent(context, BirtCer.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }
+                        else if(s.getCName().equals("Death Certificate")){
+                            Intent i = new Intent(context, DeathCer.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }
+                        else if(s.getCName().equals("Marrige Certificate")){
+                            Intent i = new Intent(context, MarrigeCer.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }
+
+//
+//                        SharedPreferences sp = context.getSharedPreferences("certificate", Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor ed = sp.edit();
+//                        ed.putString("cid", s.getCId());
+//                        ed.putString("cname", s.getCName());
+//                        ed.putString("amount", s.getCFee());
+//                        ed.commit();
+//                        Intent i = new Intent(context, ViewUser.class);
+//                        context.startActivity(i);
                     }
                 });
                 alertbox.show();

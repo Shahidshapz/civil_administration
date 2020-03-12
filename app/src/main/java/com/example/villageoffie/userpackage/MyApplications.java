@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.villageoffie.R;
 import com.example.villageoffie.adapter.AppAdapter;
@@ -32,10 +33,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class MyApplications extends Fragment {
-RecyclerView recyclerView;
-List<viewuserapplication>applist;
-String userid;
-SharedPreferences sp;
+TextView birth,death,mrg;
 
 
     @Override
@@ -43,27 +41,24 @@ SharedPreferences sp;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_my_applications, container, false);
-        recyclerView=view.findViewById(R.id.recycleapp);
-        applist=new ArrayList<>();
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        birth=view.findViewById(R.id.birth);
+        death=view.findViewById(R.id.Death);
+        mrg=view.findViewById(R.id.Marrige);
+     birth.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
 
-        final ApiInterface apiService =
-
-                ApiClient.getClient().create(ApiInterface.class);
-        SharedPreferences sp = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
-        userid = sp.getString("userid", "");
-        Call<List<viewuserapplication>> call=apiService.appview("view_application",userid);
-        call.enqueue(new Callback<List<viewuserapplication>>() {
+         }
+     });
+        death.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<viewuserapplication>> call, Response<List<viewuserapplication>> response) {
-                applist=response.body();
-                AppAdapter AA=new AppAdapter(getContext(),applist);
-                recyclerView.setAdapter(AA);
+            public void onClick(View view) {
+
             }
-
+        });
+        mrg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<List<viewuserapplication>> call, Throwable t) {
+            public void onClick(View view) {
 
             }
         });

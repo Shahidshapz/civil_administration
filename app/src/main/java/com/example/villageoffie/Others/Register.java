@@ -77,9 +77,9 @@ String vil,tal,dist;
         age = findViewById(R.id.agereg);
         mob = findViewById(R.id.mobilereg);
         address = findViewById(R.id.addressreg);
-        village = findViewById(R.id.villagereg);
-        taluk = findViewById(R.id.talukreg);
-        district = findViewById(R.id.disreg);
+//        village = findViewById(R.id.villagereg);
+//        taluk = findViewById(R.id.talukreg);
+//        district = findViewById(R.id.disreg);
         job = findViewById(R.id.jobreg);
         fname = findViewById(R.id.fname);
         mname = findViewById(R.id.mname);
@@ -92,39 +92,39 @@ String vil,tal,dist;
         getspinner();
         getspinner1();
         getspinner2();
-        village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                vil=village.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        taluk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tal=taluk.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                dist=district.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                vil=village.getSelectedItem().toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//        taluk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                tal=taluk.getSelectedItem().toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//        district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                dist=district.getSelectedItem().toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,8 +153,7 @@ String vil,tal,dist;
                             ApiClient.getClient().create(ApiInterface.class);
 
                     Call<reg> call = apiService.register("user_register", name.getText().toString(), mob.getText().toString(),
-                            address.getText().toString(), age.getText().toString(), vil, tal,
-                            dist, job.getText().toString(), username.getText().toString(), password.getText().toString(), encodedImage,
+                            address.getText().toString(), age.getText().toString(), job.getText().toString(), username.getText().toString(), password.getText().toString(), encodedImage,
                             cno.getText().toString(), cvv.getText().toString(), fname.getText().toString(), mname.getText().toString());
                     call.enqueue(new Callback<reg>() {
                         @Override

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".userpackage.BirtCer">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Application for Trade Lisence"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="#000"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/sname"
+            android:hint="Shop Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/spur"
+            android:hint="Purpose for Lisence"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/sowner"
+            android:hint="Owner name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/swno"
+            android:hint="Ward number"
+            android:inputType="number"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/sbno"
+            android:hint="Building number"
+            android:inputType="number"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/saddress"
+            android:hint="Shop Address"
+            android:layout_margin="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit1"
+            android:id="@+id/btnapply"
+            android:layout_gravity="center"
+            android:inputType="textImeMultiLine"
+            android:hint="Apply"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

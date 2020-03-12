@@ -26,12 +26,12 @@
         android:textColorHint="#000"
         android:textColor="#000"
         android:inputType="textPersonName"
-        android:hint="Village Name"
+        android:hint="Officer Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <Spinner
         android:id="@+id/nametaluk"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
@@ -42,9 +42,9 @@
         android:ems="10"
         android:textColorHint="#000"
         android:textColor="#000"
-        android:background="@drawable/edit1"
-        android:inputType="textPersonName"
-        android:hint="Taluk"
+        android:background="@drawable/shape"
+
+        android:hint="Designation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
         android:textColor="#000"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:hint="Mobile"
         android:background="@drawable/edit1"
         app:layout_constraintEnd_toEndOf="parent"

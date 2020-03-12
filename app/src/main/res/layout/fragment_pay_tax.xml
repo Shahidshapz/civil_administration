@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".userpackage.ApplyLisence">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/Vbp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="View Building Permission" />
+    <TextView
+        android:id="@+id/vtl"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="View Trade Lisence" />
+
+</LinearLayout>

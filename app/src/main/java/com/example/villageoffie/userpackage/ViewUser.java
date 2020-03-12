@@ -97,7 +97,7 @@ String job1;
         pload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectImage();
+
             }
         });
         sp1=getSharedPreferences("certificate", Context.MODE_PRIVATE);
@@ -146,56 +146,44 @@ String job1;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(ViewUser.this, job.getText().toString()+"", Toast.LENGTH_SHORT).show();
-                if ((job1.trim().equals("Private") || job1.trim().equals("private")
-                        || job1.trim().equals("Government") || job1.trim().equals("government")) && cname.equals("Income Certificate")) {
-
-
-                        if (!pload.getText().toString().equals("uploaded")) {
-                            Toast.makeText(ViewUser.this, "please upload your salary slip", Toast.LENGTH_SHORT).show();
-                        } else {
-                            apply();
-                        }
-
-                }else {
-
-                    apply();
+                if(cname.equals("Birth Certificate")){
+                    startActivity(new Intent(getApplicationContext(),BirtCer.class));
+                    finish();
                 }
-
             }
         });
     }
 
-    private void apply() {
-        SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
-        userid = sp.getString("userid", "");
+//    private void apply() {
+//        SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
+//        userid = sp.getString("userid", "");
+//
+//        cid = sp1.getString("cid", "");
+//
+//        // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
+//        Date c = Calendar.getInstance().getTime();
+//        System.out.println("Current time => " + c);
+//
+//        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//        String formattedDate = df.format(c);
+//        ApiInterface apiService =
+//                ApiClient.getClient().create(ApiInterface.class);
+//        Call<reg> call = apiService.applicatin("application", userid, cid, cname, encodedImage, formattedDate,sp1.getString("amount", ""));
+//        call.enqueue(new Callback<reg>() {
+//            @Override
+//            public void onResponse(Call<reg> call, Response<reg> response) {
+//                Toast.makeText(ViewUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getApplicationContext(), UserHome.class));
+//                finish();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<reg> call, Throwable t) {
+//                Toast.makeText(ViewUser.this, t + "", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        cid = sp1.getString("cid", "");
-
-        // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        String formattedDate = df.format(c);
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
-        Call<reg> call = apiService.app("application", userid, cid, cname, encodedImage, formattedDate,sp1.getString("amount", ""));
-        call.enqueue(new Callback<reg>() {
-            @Override
-            public void onResponse(Call<reg> call, Response<reg> response) {
-                Toast.makeText(ViewUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), UserHome.class));
-                finish();
-            }
-
-            @Override
-            public void onFailure(Call<reg> call, Throwable t) {
-                Toast.makeText(ViewUser.this, t + "", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
+  //  }
 
     private void SelectImage() {
         final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};

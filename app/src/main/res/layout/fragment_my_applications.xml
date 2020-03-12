@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ss"
-    tools:context=".userpackage.MyApplications">
+    android:orientation="vertical"
+    tools:context=".userpackage.ApplyLisence">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleapp"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/birth"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="Birth Certificate" />
+    <TextView
+        android:id="@+id/Death"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="Death Certificate" />
+    <TextView
+        android:id="@+id/Marrige"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="Marrige Certificate" />
+
+</LinearLayout>

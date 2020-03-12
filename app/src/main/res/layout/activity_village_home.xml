@@ -1,15 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".village.VillageHome">
+    android:orientation="vertical"
+    tools:context=".userpackage.ApplyLisence">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAppli"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/Vbp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="73dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="View Building Permission" />
+    <TextView
+        android:id="@+id/vtl"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:text="View Trade Lisence" />
+    <TextView
+        android:id="@+id/bcer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:text="View  Birth Certificate" />
+    <TextView
+        android:id="@+id/dcer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:text="View Death Certificatee" />
+    <TextView
+        android:id="@+id/vmrg"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:text="View Marrige certificate" />
+    <TextView
+        android:id="@+id/btax"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:text="View Building Tax" />
+    <TextView
+        android:id="@+id/ptax"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:text="View Professional Tax" />
+</LinearLayout>

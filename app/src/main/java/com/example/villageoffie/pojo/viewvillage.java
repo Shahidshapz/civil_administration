@@ -4,34 +4,211 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class viewvillage {
-    @SerializedName("v_id")
+    @SerializedName("user_id")
+    @Expose
+    private String userId;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("age")
+    @Expose
+    private String age;
+    @SerializedName("mobile")
+    @Expose
+    private String mobile;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("village")
+    @Expose
+    private String village;
+    @SerializedName("taluk")
+    @Expose
+    private String taluk;
+    @SerializedName("district")
+    @Expose
+    private String district;
+    @SerializedName("job")
+    @Expose
+    private String job;
+    @SerializedName("username")
+    @Expose
+    private String username;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("cno")
+    @Expose
+    private String cno;
+    @SerializedName("cvv")
+    @Expose
+    private String cvv;
+    @SerializedName("fname")
+    @Expose
+    private String fname;
+    @SerializedName("mname")
+    @Expose
+    private String mname;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+    public String getTaluk() {
+        return taluk;
+    }
+
+    public void setTaluk(String taluk) {
+        this.taluk = taluk;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getMname() {
+        return mname;
+    }
+
+    public void setMname(String mname) {
+        this.mname = mname;
+    }
+
+    @SerializedName("off_id")
     @Expose
     private String vId;
-    @SerializedName("v_name")
+    @SerializedName("off_name")
     @Expose
     private String vName;
-    @SerializedName("v_taluk")
+    @SerializedName("off_designation")
     @Expose
     private String vTaluk;
-    @SerializedName("v_district")
+    @SerializedName("off_district")
     @Expose
     private String vDistrict;
-    @SerializedName("v_state")
+    @SerializedName("off_state")
     @Expose
     private String vState;
-    @SerializedName("v_place")
+    @SerializedName("off_place")
     @Expose
     private String vPlace;
-    @SerializedName("v_pin")
+    @SerializedName("off_pin")
     @Expose
     private String vPin;
-    @SerializedName("v_mobile")
+    @SerializedName("off_mobile")
     @Expose
     private String vMobile;
-    @SerializedName("v_username")
+    @SerializedName("off_username")
     @Expose
     private String vUsername;
-    @SerializedName("v_password")
+    @SerializedName("off_password")
     @Expose
     private String vPassword;
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/cardvillage"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="15dp"
+    android:elevation="15dp"
+    app:cardBackgroundColor="#614D22"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+>
+    <ImageView
+        android:id="@+id/upic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/vnameview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Village Name"
+            android:textColor="#fff">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/vtalukview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taluk"
+            android:textColor="#fff">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/vdistrictview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="District"
+            android:textColor="#fff">
+
+        </TextView>
+        <TextView
+            android:id="@+id/vstateview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="State"
+            android:textColor="#fff">
+
+        </TextView>
+        <TextView
+            android:id="@+id/vplaceview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place"
+            android:textColor="#fff">
+
+        </TextView>
+        <TextView
+            android:id="@+id/vpinview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pin code"
+            android:textColor="#fff">
+
+        </TextView>
+        <TextView
+            android:id="@+id/vmobview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PhoneNumber"
+            android:textColor="#fff">
+
+
+        </TextView>
+
+
+    </LinearLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>

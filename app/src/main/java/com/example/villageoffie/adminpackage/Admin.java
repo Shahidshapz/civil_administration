@@ -12,7 +12,7 @@ import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
 
 public class Admin extends AppCompatActivity {
-Button addvillage,addcerti,viewvill,viewcerti,log;
+Button addvillage,addcerti,viewvill,viewcerti,log,users,feedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ Button addvillage,addcerti,viewvill,viewcerti,log;
         addcerti=findViewById(R.id.certadd);
         viewvill=findViewById(R.id.viewvill);
         viewcerti=findViewById(R.id.viewcert);
+        users=findViewById(R.id.user);
+        feedback=findViewById(R.id.viewfeed);
         log=findViewById(R.id.logoutadmin);
        addvillage.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -51,6 +53,20 @@ Button addvillage,addcerti,viewvill,viewcerti,log;
                startActivity(i);
            }
        });
+        users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),ViewUsers.class);
+                startActivity(i);
+            }
+        });
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),Viewfeedback.class);
+                startActivity(i);
+            }
+        });
        log.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

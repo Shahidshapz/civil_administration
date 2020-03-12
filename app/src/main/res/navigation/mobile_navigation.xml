@@ -30,4 +30,19 @@
         android:name="com.example.villageoffie.userpackage.MyApplications"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+    <fragment
+        android:id="@+id/nav_feed"
+        android:name="com.example.villageoffie.userpackage.SendFeedback"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_blank" />
+    <fragment
+        android:id="@+id/nav_apply"
+        android:name="com.example.villageoffie.userpackage.ApplyLisence"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_apply_lisence" />
+    <fragment
+        android:id="@+id/nav_pay"
+        android:name="com.example.villageoffie.userpackage.PayTax"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_pay_tax" />
 </navigation>

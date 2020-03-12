@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".userpackage.BirtCer">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Application for Marrige certificate"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="#000"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/cname"
+            android:hint="Husbands Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/sex"
+            android:hint="Sex (male/female)"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dob"
+            android:hint="Date of Birth"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/time"
+            android:hint="Date of Marrige"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/place"
+            android:hint="Place of Marrige"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/dor"
+            android:hint="Date of Registration"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/mname"
+            android:hint="Husband's Mother's Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/fname"
+            android:hint="Husband's Father's name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/national"
+            android:inputType="textPersonName"
+            android:hint="Husband's Nationality"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/job"
+            android:inputType="textPersonName"
+            android:hint="Husband's Job"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/address"
+            android:inputType="textImeMultiLine"
+            android:hint="Husband's Address"
+            android:layout_margin="10dp"/>
+
+<Button
+    android:id="@+id/btnhuspic"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape"
+    android:layout_gravity="center"
+    android:text="Upload Husbands photo"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wname"
+            android:hint="Wife's Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wsex"
+            android:hint="Wife Sex (male/female)"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wdob"
+            android:hint="Date of Birth"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wmname"
+            android:hint="Wife's Mother's Name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wfname"
+            android:hint="wife's Father's name"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wnational"
+            android:inputType="textPersonName"
+            android:hint="Wife's Nationality"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/wjob"
+            android:inputType="textPersonName"
+            android:hint="Wife's Job"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/waddress"
+            android:inputType="textImeMultiLine"
+            android:hint="Wife's Address"
+            android:layout_margin="10dp"/>
+        <Button
+            android:id="@+id/btnwifepic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:layout_gravity="center"
+            android:text="Upload Wife's photo"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit1"
+            android:id="@+id/btnapply"
+            android:layout_gravity="center"
+            android:hint="Apply"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -87,58 +87,39 @@ public class ViewApplications extends AppCompatActivity {
         adoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = getSharedPreferences("verify", Context.MODE_PRIVATE);
-                SharedPreferences.Editor ed = sp.edit();
+                SharedPreferences sp1 = getSharedPreferences("verify", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = sp1.edit();
 
-                ed.putString("uid", userid);
+                ed.putString("uid",sp.getString("uid",""));
                 ed.commit();
                 startActivity(new Intent(getApplicationContext(), verifyDocs.class));
                 finish();
             }
         });
         sp = getSharedPreferences("viewApp", Context.MODE_PRIVATE);
-        userid = sp.getString("uid", "");
-        cid = sp.getString("cid", "");
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<viewAppli> call = apiService.getAppli("villageviewApplications", userid, cid);
-        call.enqueue(new Callback<viewAppli>() {
-            @Override
-            public void onResponse(Call<viewAppli> call, Response<viewAppli> response) {
-                aname.setText(":\t" + response.body().getName());
-                age.setText(":\t" + response.body().getAge());
-                address.setText(":\t" + response.body().getAddress());
-                village.setText(":\t" + response.body().getVillage());
-                taluk.setText(":\t" + response.body().getTaluk());
-                district.setText(":\t" + response.body().getDistrict());
-                job.setText(":\t" + response.body().getJob());
-                job1 = response.body().getJob();
-                Mobile.setText(":\t" + response.body().getMobile());
-                applyfor.setText(":\t" + response.body().getCName());
-                adate.setText(":\t" + response.body().getCdate());
-                afee.setText(":\t" + response.body().getFee());
-                mname.setText(":\t" + response.body().getMname());
-                fname.setText(":\t" + response.body().getFname());
-                appid=response.body().getAppId();
+
+        applyfor.setText(":\t" + sp.getString("oname",""));
+                adate.setText(":\t" + sp.getString("address",""));
+                afee.setText(":\t" + sp.getString("sqft",""));
+                aname.setText(":\t" + sp.getString("rooms",""));
+                age.setText(":\t" + sp.getString("adate",""));
+//                district.setText(":\t" + response.body().getDistrict());
+//                job.setText(":\t" + response.body().getJob());
+//                job1 = response.body().getJob();
+//                Mobile.setText(":\t" + response.body().getMobile());
+//                applyfor.setText(":\t" + response.body().getCName());
+//                adate.setText(":\t" + response.body().getCdate());
+//                afee.setText(":\t" + response.body().getFee());
+//                mname.setText(":\t" + response.body().getMname());
+//                fname.setText(":\t" + response.body().getFname());
+//                appid=response.body().getAppId();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] imageBytes = baos.toByteArray();
-                imageBytes = Base64.decode(response.body().getImage(), Base64.DEFAULT);
+                imageBytes = Base64.decode(sp.getString("pic",""), Base64.DEFAULT);
                 Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                 imageView.setImageBitmap(decodedImage);
-                if (response.body().getJob().trim().equals("Private") || response.body().getJob().equals("Government")
-                        || response.body().getJob().trim().equals("private") || response.body().getJob().equals("government")) {
-                    ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
-                    byte[] imageBytes1 = baos1.toByteArray();
-                    imageBytes = Base64.decode(response.body().getSlip(), Base64.DEFAULT);
-                    Bitmap decodedImage1 = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                    aslip.setImageBitmap(decodedImage1);
-                }
-            }
+        appid=sp.getString("bid","");
 
-            @Override
-            public void onFailure(Call<viewAppli> call, Throwable t) {
-
-            }
-        });
 
     }
 
@@ -150,7 +131,7 @@ public class ViewApplications extends AppCompatActivity {
             public void onResponse(Call<login> call, Response<login> response) {
                 Log.d("@@",response.body().getMessage());
                 Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),VillageHome.class));
+                startActivity(new Intent(getApplicationContext(),Appliedlist.class));
                 finish();
             }
 
@@ -162,7 +143,7 @@ public class ViewApplications extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), VillageHome.class));
+        startActivity(new Intent(getApplicationContext(), Appliedlist.class));
         finish();
     }
 }

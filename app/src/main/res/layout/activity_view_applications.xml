@@ -38,7 +38,31 @@
             android:textColor="#f00"
             android:textSize="15dp"
             android:layout_height="wrap_content"
-            android:text="Apply for" />
+            android:text="Owner Name" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            android:textSize="15dp"
+            android:text="Address" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            android:textSize="15dp"
+            android:text="Total Sqft" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            android:textSize="15dp"
+            android:text="No.of Rooms" />
 
         <TextView
 
@@ -53,30 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Paid fee" />
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Applicant Name" />
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="15dp"
-            android:text="Age" />
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
+            android:visibility="gone"
             android:textSize="15dp"
             android:text="Father's name" />
 
@@ -85,6 +86,7 @@
             android:layout_width="match_parent"
             android:textColor="#f00"
             android:textSize="15dp"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="Mother's Name" />
 
@@ -93,6 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#f00"
+            android:visibility="gone"
             android:textSize="15dp"
             android:text="Mobile" />
 
@@ -102,6 +105,7 @@
             android:layout_height="70dp"
             android:textColor="#f00"
             android:textSize="15dp"
+            android:visibility="gone"
             android:text="Address" />
 
         <TextView
@@ -109,6 +113,7 @@
             android:layout_width="match_parent"
             android:textColor="#f00"
             android:textSize="15dp"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="Village" />
 
@@ -116,6 +121,7 @@
 
             android:layout_width="match_parent"
             android:textColor="#f00"
+            android:visibility="gone"
             android:textSize="15dp"
             android:layout_height="wrap_content"
             android:text="Taluk" />
@@ -125,6 +131,7 @@
             android:layout_width="match_parent"
             android:textColor="#f00"
             android:textSize="15dp"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="District" />
 
@@ -132,6 +139,7 @@
             android:layout_width="match_parent"
             android:textColor="#f00"
             android:textSize="15dp"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="Job" />
     </LinearLayout>
@@ -185,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#f00"
+                android:visibility="gone"
                 android:textSize="15dp"
                 android:text="Apply for" />
 
@@ -193,6 +202,7 @@
                 android:layout_width="match_parent"
                 android:textColor="#f00"
                 android:textSize="15dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:text="Apply for" />
 
@@ -201,6 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#f00"
+                android:visibility="gone"
                 android:textSize="15dp"
                 android:text="Apply for" />
 
@@ -209,13 +220,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:textColor="#f00"
-                android:textSize="15dp"
+                android:visibility="gone"
                 android:text="Apply for" />
 
             <TextView
                 android:id="@+id/avillage"
                 android:layout_width="match_parent"
                 android:textColor="#f00"
+                android:visibility="gone"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
                 android:text="Apply for" />
@@ -224,6 +236,7 @@
                 android:id="@+id/ataluk"
                 android:layout_width="match_parent"
                 android:textColor="#f00"
+                android:visibility="gone"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
                 android:text="Apply for" />
@@ -233,6 +246,7 @@
                 android:layout_width="match_parent"
                 android:textColor="#f00"
                 android:textSize="15dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:text="Apply for" />
 
@@ -241,6 +255,7 @@
                 android:layout_width="match_parent"
                 android:textColor="#f00"
                 android:textSize="15dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:text="Apply for" />
         </LinearLayout>

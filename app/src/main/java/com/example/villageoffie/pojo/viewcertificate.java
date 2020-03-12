@@ -4,6 +4,72 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class viewcertificate {
+    @SerializedName("from1")
+    @Expose
+    private String from;
+    @SerializedName("feedback")
+    @Expose
+    private String feedback;
+    @SerializedName("date")
+    @Expose
+    private String date;
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId;
+    }
+
+    public String getcName() {
+        return cName;
+    }
+
+    public void setcName(String cName) {
+        this.cName = cName;
+    }
+
+    public String getcReq() {
+        return cReq;
+    }
+
+    public void setcReq(String cReq) {
+        this.cReq = cReq;
+    }
+
+    public String getcFee() {
+        return cFee;
+    }
+
+    public void setcFee(String cFee) {
+        this.cFee = cFee;
+    }
+
     @SerializedName("c_id")
     @Expose
     private String cId;

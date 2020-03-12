@@ -55,20 +55,19 @@
         android:id="@+id/jobreg"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/edit1"
         android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColorHint="#000"
-        android:padding="10dp"
         android:hint="JobType"
         android:inputType="textPersonName"
+        android:padding="10dp"
         android:textColor="#000"
+        android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disreg" />
+        app:layout_constraintTop_toBottomOf="@+id/cvv" />
 
     <EditText
         android:id="@+id/addressreg"
@@ -144,51 +143,90 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mname" />
 
-    <Spinner
-        android:id="@+id/villagereg"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
+<!--<TextView-->
+<!--    android:id="@+id/a"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Select your Village"-->
+<!--    android:layout_marginTop="8dp"-->
+<!--android:textColor="#000"-->
+<!--    android:layout_marginLeft="20dp"-->
+<!--    android:layout_marginRight="20dp"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintHorizontal_bias="0.0"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/mobilereg"/>-->
+<!--    <Spinner-->
+<!--        android:id="@+id/villagereg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginTop="8dp"-->
 
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
 
-   android:background="#312A2A"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mobilereg" />
+<!--   android:background="#312A2A"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/a" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/b"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Select your Taluk"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:textColor="#000"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/villagereg"/>-->
 
-    <Spinner
-        android:id="@+id/talukreg"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:background="#000"
+<!--    <Spinner-->
+<!--        android:id="@+id/talukreg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="#000"-->
 
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
 
-        android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/villagereg" />
+<!--        android:textColor="#000"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/b" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/c"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Select your District"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:textColor="#000"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/talukreg"/>-->
 
-    <Spinner
-        android:id="@+id/disreg"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:background="#000"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+<!--    <Spinner-->
+<!--        android:id="@+id/disreg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="#000"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
 
-        android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/talukreg" />
+<!--        android:textColor="#000"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/c" />-->
 
     <EditText
         android:id="@+id/usrreg"
@@ -207,7 +245,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jobreg" />
+        app:layout_constraintTop_toBottomOf="@+id/mobilereg" />
 
     <EditText
         android:id="@+id/passreg"
@@ -275,7 +313,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvv" />
+        app:layout_constraintTop_toBottomOf="@+id/jobreg" />
 
     <Button
         android:id="@+id/button5"
@@ -289,7 +327,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passreg"
+        app:layout_constraintTop_toBottomOf="@+id/jobreg"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

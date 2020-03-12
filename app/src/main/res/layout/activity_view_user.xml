@@ -231,8 +231,9 @@
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_margin="15dp"
+            android:visibility="gone"
             android:text="Upload your Salary Slip"
-            android:visibility="gone" />
+            />
 
         <Button
             android:id="@+id/button4"

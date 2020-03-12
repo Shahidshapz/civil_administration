@@ -8,12 +8,23 @@ public class login
     @SerializedName("message")
     @Expose
     private String message;
+    @SerializedName("uname")
+    @Expose
+    private String uname;
     @SerializedName("user_id")
     @Expose
     private String userId;
     @SerializedName("utype")
     @Expose
     private String utype;
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
     public String getMessage() {
         return message;
