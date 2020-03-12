@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BirthAppliedlist extends AppCompatActivity {
+public class DeathAppliedList extends AppCompatActivity {
     RecyclerView recyclerView;
     List<viewuserapplication> applist;
     String userid;
@@ -35,7 +35,7 @@ public class BirthAppliedlist extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_birth_appliedlist);
+        setContentView(R.layout.activity_death_applied_list);
         recyclerView=findViewById(R.id.viewAppli);
         applist=new ArrayList<>();
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
@@ -46,12 +46,12 @@ public class BirthAppliedlist extends AppCompatActivity {
                 ApiClient.getClient().create(ApiInterface.class);
         SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
         userid = sp.getString("userid", "");
-        Call<List<viewuserapplication>> call=apiService.appview("getBirth");
+        Call<List<viewuserapplication>> call=apiService.appview("getDeath");
         call.enqueue(new Callback<List<viewuserapplication>>() {
             @Override
             public void onResponse(Call<List<viewuserapplication>> call, Response<List<viewuserapplication>> response) {
                 applist=response.body();
-                BirthAdapter AA=new BirthAdapter(getApplicationContext(),applist);
+                DeathAdapter AA=new DeathAdapter(getApplicationContext(),applist);
                 recyclerView.setAdapter(AA);
             }
 

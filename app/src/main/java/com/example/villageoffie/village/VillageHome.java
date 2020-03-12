@@ -62,19 +62,19 @@ if(type.equals("Permission_Approval_officer")){
         vbcer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+                startActivity(new Intent(getApplicationContext(), BirthAppliedlist.class));
             }
         });
         vdcer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+                startActivity(new Intent(getApplicationContext(), DeathAppliedList.class));
             }
         });
         vmrg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+                startActivity(new Intent(getApplicationContext(), MrgAppliedList.class));
             }
         });
         vbtax.setOnClickListener(new View.OnClickListener() {

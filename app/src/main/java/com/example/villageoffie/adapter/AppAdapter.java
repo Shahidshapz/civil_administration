@@ -54,7 +54,14 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
         holder.name.setText("Applicant Name\t:\t" + s.getName());
         if (s.getStatus().equals("0")) {
             holder.status.setText("Status    : Pending");
-               holder.cv.setOnClickListener(new View.OnClickListener() {
+        }
+        else if (s.getStatus().equals("1")) {
+            holder.status.setText("Status    : Approved");
+
+        } else if (s.getStatus().equals("2")) {
+            holder.status.setText("Status    : Rejected");
+        }
+             holder.cv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
@@ -95,47 +102,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
                         alertbox.show();
                     }
                 });
-            }
-         else if (s.getStatus().equals("1")) {
-            holder.status.setText("Status    : Approved");
-            SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-            if (sp.getString("utype", "").equals("user")) {
-                holder.cv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
-                        alertbox.setMessage("Do you want to view your e-Certificate??");
-                        alertbox.setTitle("warning");
-                        alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                SharedPreferences sp = context.getSharedPreferences("viewApp", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor ed = sp.edit();
-//                                ed.putString("cid", s.getCId());
-//                                ed.putString("uid", s.getUserId());
-                                ed.commit();
-                                Intent i = new Intent(context, Viewissued.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                context.startActivity(i);
-
-                            }
 
 
-                        });
-                        alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-
-                            }
-                        });
-                        alertbox.show();
-                    }
-                });
-            }
-        } else if (s.getStatus().equals("2")) {
-            holder.status.setText("Status    : Rejected");
-        }
     }
 
     @Override

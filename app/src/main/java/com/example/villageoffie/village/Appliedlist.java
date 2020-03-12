@@ -32,6 +32,7 @@ public class Appliedlist extends AppCompatActivity {
     List<viewuserapplication> applist;
     String userid;
     SharedPreferences sp;
+    String key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
