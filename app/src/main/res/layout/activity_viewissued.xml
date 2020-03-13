@@ -327,7 +327,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/button"
             android:padding="10dp"
-            android:text="Generate PDF" />
+            android:text="Take Screen shot" />
 
         <TextView
             android:layout_width="match_parent"
