@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="BIRTH CERTIFICATE"
+            android:text="DEATH CERTIFICATE"
             android:textColor="#f00"
             android:textSize="25dp" />
 
@@ -97,7 +97,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Time of Birth"
+                    android:text="Date of Death"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -105,7 +105,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Place of Birth"
+                    android:text="Place of Death"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -138,6 +138,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Father's Name"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Death time"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Reason"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -232,7 +246,20 @@
                     android:text="Apply for"
                     android:textColor="#f00"
                     android:textSize="15dp" />
-
+                <TextView
+                    android:id="@+id/dtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/dreason"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Apply for"
+                    android:textColor="#f00"
+                    android:textSize="15dp" />
 
             </LinearLayout>
         </LinearLayout>

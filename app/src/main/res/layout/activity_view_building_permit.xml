@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="BIRTH CERTIFICATE"
+            android:text="BUILDING PERMIT"
             android:textColor="#f00"
             android:textSize="25dp" />
 
@@ -71,7 +71,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Name"
+                    android:text="Owner Name"
                     android:textColor="#f00"
                     android:textSize="15dp"
                     android:visibility="visible" />
@@ -81,7 +81,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="sex"
+                    android:text="Number of Rooms"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -89,7 +89,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="DOB"
+                    android:text="Total SQFT"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -97,22 +97,6 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Time of Birth"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Place of Birth"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
                     android:text="Address"
                     android:textColor="#f00"
                     android:textSize="15dp" />
@@ -121,25 +105,10 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Date of Registration"
+                    android:text="Applied Date"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Mother's name"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Father's Name"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
 
 
             </LinearLayout>
@@ -201,37 +170,6 @@
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
-                <TextView
-                    android:id="@+id/aaddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:text="Apply for"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/avillage"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Apply for"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/ataluk"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Apply for"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/adist"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="Apply for"
-                    android:textColor="#f00"
-                    android:textSize="15dp" />
 
 
             </LinearLayout>

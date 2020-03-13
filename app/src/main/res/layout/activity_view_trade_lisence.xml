@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/abc"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="BIRTH CERTIFICATE"
+            android:text="TRADE LISENCE"
             android:textColor="#f00"
             android:textSize="25dp" />
 
@@ -71,7 +76,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Name"
+                    android:text="Shop Name"
                     android:textColor="#f00"
                     android:textSize="15dp"
                     android:visibility="visible" />
@@ -81,7 +86,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="sex"
+                    android:text="Purpose"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -89,7 +94,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="DOB"
+                    android:text="Owner Name"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -97,7 +102,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Time of Birth"
+                    android:text="Ward Number"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -105,7 +110,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="Place of Birth"
+                    android:text="Building Number"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -131,6 +136,7 @@
                     android:layout_height="30dp"
                     android:text="Mother's name"
                     android:textColor="#f00"
+                    android:visibility="gone"
                     android:textSize="15dp" />
 
                 <TextView
@@ -138,6 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Father's Name"
+                    android:visibility="gone"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -222,6 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Apply for"
+                    android:visibility="gone"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -230,6 +238,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Apply for"
+                    android:visibility="gone"
                     android:textColor="#f00"
                     android:textSize="15dp" />
 
@@ -335,4 +344,5 @@
             android:background="#000"></TextView>
     </LinearLayout>
 
+</LinearLayout>
 </androidx.core.widget.NestedScrollView>

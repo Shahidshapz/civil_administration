@@ -13,7 +13,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -30,11 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.villageoffie.R;
-import com.example.villageoffie.pojo.Viewbirthpojo;
-import com.example.villageoffie.pojo.login;
-import com.example.villageoffie.pojo.viewAppli;
-import com.example.villageoffie.village.VillageHome;
-import com.example.villageoffie.village.verifyDocs;
+import com.example.villageoffie.pojo.Viewdeathpojo;
+import com.example.villageoffie.pojo.Viewmrgpojo;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 import com.itextpdf.text.Chunk;
@@ -64,33 +60,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Viewissued extends AppCompatActivity {
+public class ViewmrgCer extends AppCompatActivity {
     SharedPreferences sp;
     String userid, cid;
     ImageView imageView, aslip;
-    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc;
+    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc,
+            dtime,dreason,wname,wsex,wdob,wmname,wfname,wnation,wjob,waddress;
     String job1, category,appid;
     EditText opinion;
     Button issue, reject;
     private File pdfFile;
     String date;
+    ImageView hpic,wpic;
     ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewissued);
+        setContentView(R.layout.activity_viewmrg_cer);
+
         imageView = findViewById(R.id.apic);
         aslip = findViewById(R.id.aslip);
         SharedPreferences sp = getSharedPreferences("adate", Context.MODE_PRIVATE);
-date=sp.getString("date","");
+        date=sp.getString("date","");
         Toast.makeText(this, date+"", Toast.LENGTH_SHORT).show();
         opinion = findViewById(R.id.comment);
         issue = findViewById(R.id.btnissue);
         reject = findViewById(R.id.btnrej);
-
+        dtime = findViewById(R.id.dtime);
+        dreason = findViewById(R.id.dreason);
         applyfor = findViewById(R.id.applyfor);
         adate = findViewById(R.id.adate);
-       afee = findViewById(R.id.afee);
+        afee = findViewById(R.id.afee);
         aname = findViewById(R.id.aname);
         age = findViewById(R.id.aage);
         address = findViewById(R.id.aaddress);
@@ -102,20 +102,30 @@ date=sp.getString("date","");
         mname = findViewById(R.id.amname);
         fname = findViewById(R.id.afname);
         adoc = findViewById(R.id.adoc);
+        wname= findViewById(R.id.wname);
+        wsex= findViewById(R.id.wsex);
+        wdob= findViewById(R.id.wdob);
+        wmname= findViewById(R.id.wmname);
+        wfname= findViewById(R.id.wfname);
+        wnation= findViewById(R.id.wnation);
+        wjob= findViewById(R.id.wjob); hpic= findViewById(R.id.hpic);
+        wpic= findViewById(R.id.wpic);
+        waddress=findViewById(R.id.waddress);;
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                     pd = new ProgressDialog(Viewissued.this);
-                     pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    pd.setMessage("Please wait,when pdf generate completed it will automatically open.");
-                    pd.show();
-                    createPdfWrapper();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (DocumentException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    pd = new ProgressDialog(ViewmrgCer.this);
+//                    pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//                    pd.setMessage("Please wait,when pdf generate completed it will automatically open.");
+//                    pd.show();
+//                    createPdfWrapper();
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                } catch (DocumentException e) {
+//                    e.printStackTrace();
+//                }
+                takeScreenshot();
             }
         });
         Date c = Calendar.getInstance().getTime();
@@ -128,32 +138,55 @@ date=sp.getString("date","");
         userid = sp1.getString("userid", "");
         Toast.makeText(this, userid+"", Toast.LENGTH_SHORT).show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Viewbirthpojo> call = apiService.getBirth("ViewBirthcer", userid,date);
-        call.enqueue(new Callback<Viewbirthpojo>() {
+        Call<Viewmrgpojo> call = apiService.getmrg("Viewmrgcer", userid,date);
+        call.enqueue(new Callback<Viewmrgpojo>() {
             @Override
-            public void onResponse(Call<Viewbirthpojo> call, Response<Viewbirthpojo> response) {
-                Toast.makeText(Viewissued.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
-                aname.setText(":\t" + response.body().getBname());
-                age.setText(":\t" + response.body().getSex());
-                mname.setText(":\t" + response.body().getBtime());
-                fname.setText(":\t" + response.body().getDob());
-                address.setText(":\t" + response.body().getAddress());
-                village.setText(":\t" + response.body().getDor());
-                taluk.setText(":\t" + response.body().getMname());
-                district.setText(":\t" + response.body().getFname());
+            public void onResponse(Call<Viewmrgpojo> call, Response<Viewmrgpojo> response) {
+           //     Toast.makeText(ViewmrgCer.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
+                aname.setText(":\t" + response.body().getHmname());
+                age.setText(":\t" + response.body().getHsex());
+                mname.setText(":\t" + response.body().getDom());
+                fname.setText(":\t" + response.body().getHdob());
+                address.setText(":\t" + response.body().getDor());
+                village.setText(":\t" + response.body().getHfname());
+                taluk.setText(":\t" + response.body().getHmname());
+                district.setText(":\t" + response.body().getHnationality());
                 job.setText(response.body().getComment());
 
                 Mobile.setText(":\t" + response.body().getPlace());
-              //  applyfor.setText(response.body().getCName());
-                adate.setText(formattedDate);
-               // afee.setText(":\t" + response.body().getFee());
+                dtime.setText(":\t" + response.body().getHjob());
+                dreason.setText(":\t" + response.body().getHaddress());
 
-              //  appid=response.body().getAppId();
+                wname.setText(":\t" + response.body().getWname());
+                wsex.setText(":\t" + response.body().getWsex());
+                wdob.setText(":\t" + response.body().getWdob());
+                wmname.setText(":\t" + response.body().getWmname());
+                wfname.setText(":\t" + response.body().getWfname());
+                wnation.setText(":\t" + response.body().getWnationality());
+                wjob.setText(":\t" + response.body().getWjob());
+                waddress.setText(":\t" + response.body().getWaddress());
+
+                //  applyfor.setText(response.body().getCName());
+                adate.setText(formattedDate);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                byte[] imageBytes = baos.toByteArray();
+                imageBytes = Base64.decode(response.body().getHpic(), Base64.DEFAULT);
+                Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                hpic.setImageBitmap(decodedImage);
+
+
+                ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+                byte[] imageBytes1 = baos1.toByteArray();
+                imageBytes1 = Base64.decode(response.body().getWpic(), Base64.DEFAULT);
+                Bitmap decodedImage1 = BitmapFactory.decodeByteArray(imageBytes1, 0, imageBytes1.length);
+                wpic.setImageBitmap(decodedImage1);
+
+
 
             }
 
             @Override
-            public void onFailure(Call<Viewbirthpojo> call, Throwable t) {
+            public void onFailure(Call<Viewmrgpojo> call, Throwable t) {
 
             }
         });
@@ -385,7 +418,7 @@ date=sp.getString("date","");
             e.printStackTrace();
         }
     }
-        private void previewPdf() {
+    private void previewPdf() {
 
         PackageManager packageManager = getPackageManager();
         Intent testIntent = new Intent(Intent.ACTION_VIEW);
@@ -402,4 +435,43 @@ date=sp.getString("date","");
             Toast.makeText(this,"Download a PDF Viewer to see the generated PDF",Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void takeScreenshot() {
+        Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
+        Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+
+        try {
+            // image naming and path  to include sd card  appending name you choose for file
+            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+
+            // create bitmap screen capture
+            View v1 = getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+
+            File imageFile = new File(mPath);
+
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            int quality = 100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+           openScreenshot(imageFile);
+        } catch (Throwable e) {
+            // Several error may come out with file handling or DOM
+            e.printStackTrace();
+        }
+    }
+    private void openScreenshot(File imageFile) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        Uri uri = Uri.fromFile(imageFile);
+        intent.setDataAndType(uri, "image/*");
+        startActivity(intent);
+    }
 }
+
+

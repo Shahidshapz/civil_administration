@@ -12,15 +12,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +28,7 @@ import android.widget.Toast;
 
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.Viewbirthpojo;
-import com.example.villageoffie.pojo.login;
-import com.example.villageoffie.pojo.viewAppli;
-import com.example.villageoffie.village.VillageHome;
-import com.example.villageoffie.village.verifyDocs;
+import com.example.villageoffie.pojo.Viewdeathpojo;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 import com.itextpdf.text.Chunk;
@@ -64,11 +58,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Viewissued extends AppCompatActivity {
+public class ViewDeathCer extends AppCompatActivity {
     SharedPreferences sp;
     String userid, cid;
     ImageView imageView, aslip;
-    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc;
+    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc,
+    dtime,dreason;
     String job1, category,appid;
     EditText opinion;
     Button issue, reject;
@@ -78,19 +73,20 @@ public class Viewissued extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewissued);
+        setContentView(R.layout.activity_view_death_cer);
         imageView = findViewById(R.id.apic);
         aslip = findViewById(R.id.aslip);
         SharedPreferences sp = getSharedPreferences("adate", Context.MODE_PRIVATE);
-date=sp.getString("date","");
+        date=sp.getString("date","");
         Toast.makeText(this, date+"", Toast.LENGTH_SHORT).show();
         opinion = findViewById(R.id.comment);
         issue = findViewById(R.id.btnissue);
         reject = findViewById(R.id.btnrej);
-
+        dtime = findViewById(R.id.dtime);
+        dreason = findViewById(R.id.dreason);
         applyfor = findViewById(R.id.applyfor);
         adate = findViewById(R.id.adate);
-       afee = findViewById(R.id.afee);
+        afee = findViewById(R.id.afee);
         aname = findViewById(R.id.aname);
         age = findViewById(R.id.aage);
         address = findViewById(R.id.aaddress);
@@ -106,8 +102,8 @@ date=sp.getString("date","");
             @Override
             public void onClick(View v) {
                 try {
-                     pd = new ProgressDialog(Viewissued.this);
-                     pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    pd = new ProgressDialog(ViewDeathCer.this);
+                    pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     pd.setMessage("Please wait,when pdf generate completed it will automatically open.");
                     pd.show();
                     createPdfWrapper();
@@ -128,14 +124,14 @@ date=sp.getString("date","");
         userid = sp1.getString("userid", "");
         Toast.makeText(this, userid+"", Toast.LENGTH_SHORT).show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Viewbirthpojo> call = apiService.getBirth("ViewBirthcer", userid,date);
-        call.enqueue(new Callback<Viewbirthpojo>() {
+        Call<Viewdeathpojo> call = apiService.getDeath("ViewDeathcer", userid,date);
+        call.enqueue(new Callback<Viewdeathpojo>() {
             @Override
-            public void onResponse(Call<Viewbirthpojo> call, Response<Viewbirthpojo> response) {
-                Toast.makeText(Viewissued.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
-                aname.setText(":\t" + response.body().getBname());
+            public void onResponse(Call<Viewdeathpojo> call, Response<Viewdeathpojo> response) {
+                Toast.makeText(ViewDeathCer.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
+                aname.setText(":\t" + response.body().getDname());
                 age.setText(":\t" + response.body().getSex());
-                mname.setText(":\t" + response.body().getBtime());
+                mname.setText(":\t" + response.body().getDod());
                 fname.setText(":\t" + response.body().getDob());
                 address.setText(":\t" + response.body().getAddress());
                 village.setText(":\t" + response.body().getDor());
@@ -144,16 +140,18 @@ date=sp.getString("date","");
                 job.setText(response.body().getComment());
 
                 Mobile.setText(":\t" + response.body().getPlace());
-              //  applyfor.setText(response.body().getCName());
+                dtime.setText(":\t" + response.body().getDtime());
+                dreason.setText(":\t" + response.body().getDreason());
+                //  applyfor.setText(response.body().getCName());
                 adate.setText(formattedDate);
-               // afee.setText(":\t" + response.body().getFee());
+                // afee.setText(":\t" + response.body().getFee());
 
-              //  appid=response.body().getAppId();
+                //  appid=response.body().getAppId();
 
             }
 
             @Override
-            public void onFailure(Call<Viewbirthpojo> call, Throwable t) {
+            public void onFailure(Call<Viewdeathpojo> call, Throwable t) {
 
             }
         });
@@ -385,7 +383,7 @@ date=sp.getString("date","");
             e.printStackTrace();
         }
     }
-        private void previewPdf() {
+    private void previewPdf() {
 
         PackageManager packageManager = getPackageManager();
         Intent testIntent = new Intent(Intent.ACTION_VIEW);

@@ -12,15 +12,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,11 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.villageoffie.R;
+import com.example.villageoffie.pojo.Permitpojo;
 import com.example.villageoffie.pojo.Viewbirthpojo;
-import com.example.villageoffie.pojo.login;
-import com.example.villageoffie.pojo.viewAppli;
-import com.example.villageoffie.village.VillageHome;
-import com.example.villageoffie.village.verifyDocs;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 import com.itextpdf.text.Chunk;
@@ -64,7 +58,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Viewissued extends AppCompatActivity {
+public class ViewBuildingPermit extends AppCompatActivity {
     SharedPreferences sp;
     String userid, cid;
     ImageView imageView, aslip;
@@ -78,36 +72,37 @@ public class Viewissued extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewissued);
+        setContentView(R.layout.activity_view_building_permit);
         imageView = findViewById(R.id.apic);
         aslip = findViewById(R.id.aslip);
         SharedPreferences sp = getSharedPreferences("adate", Context.MODE_PRIVATE);
-date=sp.getString("date","");
+        date=sp.getString("date","");
         Toast.makeText(this, date+"", Toast.LENGTH_SHORT).show();
         opinion = findViewById(R.id.comment);
         issue = findViewById(R.id.btnissue);
         reject = findViewById(R.id.btnrej);
 
-        applyfor = findViewById(R.id.applyfor);
-        adate = findViewById(R.id.adate);
-       afee = findViewById(R.id.afee);
+        applyfor = findViewById(R.id.adate);
+        adate = findViewById(R.id.amobile);
+        afee = findViewById(R.id.afee);
         aname = findViewById(R.id.aname);
         age = findViewById(R.id.aage);
-        address = findViewById(R.id.aaddress);
-        village = findViewById(R.id.avillage);
-        taluk = findViewById(R.id.ataluk);
-        district = findViewById(R.id.adist);
-        job = findViewById(R.id.ajob);
-        Mobile = findViewById(R.id.amobile);
         mname = findViewById(R.id.amname);
         fname = findViewById(R.id.afname);
+        address = findViewById(R.id.aaddress);
+//        village = findViewById(R.id.avillage);
+//        taluk = findViewById(R.id.ataluk);
+//        district = findViewById(R.id.adist);
+        job = findViewById(R.id.ajob);
+       // Mobile = findViewById(R.id.amobile);
+
         adoc = findViewById(R.id.adoc);
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                     pd = new ProgressDialog(Viewissued.this);
-                     pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    pd = new ProgressDialog(ViewBuildingPermit.this);
+                    pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     pd.setMessage("Please wait,when pdf generate completed it will automatically open.");
                     pd.show();
                     createPdfWrapper();
@@ -128,32 +123,30 @@ date=sp.getString("date","");
         userid = sp1.getString("userid", "");
         Toast.makeText(this, userid+"", Toast.LENGTH_SHORT).show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Viewbirthpojo> call = apiService.getBirth("ViewBirthcer", userid,date);
-        call.enqueue(new Callback<Viewbirthpojo>() {
+        Call<Permitpojo> call = apiService.getpermit("ViewPermit", userid,date);
+        call.enqueue(new Callback<Permitpojo>() {
             @Override
-            public void onResponse(Call<Viewbirthpojo> call, Response<Viewbirthpojo> response) {
-                Toast.makeText(Viewissued.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
-                aname.setText(":\t" + response.body().getBname());
-                age.setText(":\t" + response.body().getSex());
-                mname.setText(":\t" + response.body().getBtime());
-                fname.setText(":\t" + response.body().getDob());
-                address.setText(":\t" + response.body().getAddress());
-                village.setText(":\t" + response.body().getDor());
-                taluk.setText(":\t" + response.body().getMname());
-                district.setText(":\t" + response.body().getFname());
+            public void onResponse(Call<Permitpojo> call, Response<Permitpojo> response) {
+                Toast.makeText(ViewBuildingPermit.this, response.body().getAddress()+"", Toast.LENGTH_SHORT).show();
+                aname.setText(":\t" + response.body().getOname());
+                age.setText(":\t" + response.body().getNrooms());
+                mname.setText(":\t" + response.body().getAddress());
+                fname.setText(":\t" + response.body().getSqft());
+                adate.setText(":\t" + response.body().getAdate());
+
                 job.setText(response.body().getComment());
 
-                Mobile.setText(":\t" + response.body().getPlace());
-              //  applyfor.setText(response.body().getCName());
-                adate.setText(formattedDate);
-               // afee.setText(":\t" + response.body().getFee());
 
-              //  appid=response.body().getAppId();
+                 applyfor.setText(formattedDate);
+                //adate.setText(formattedDate);
+                // afee.setText(":\t" + response.body().getFee());
+
+                //  appid=response.body().getAppId();
 
             }
 
             @Override
-            public void onFailure(Call<Viewbirthpojo> call, Throwable t) {
+            public void onFailure(Call<Permitpojo> call, Throwable t) {
 
             }
         });
@@ -385,7 +378,7 @@ date=sp.getString("date","");
             e.printStackTrace();
         }
     }
-        private void previewPdf() {
+    private void previewPdf() {
 
         PackageManager packageManager = getPackageManager();
         Intent testIntent = new Intent(Intent.ACTION_VIEW);

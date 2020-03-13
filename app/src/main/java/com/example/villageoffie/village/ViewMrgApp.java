@@ -32,7 +32,8 @@ public class ViewMrgApp extends AppCompatActivity {
     SharedPreferences sp;
     String userid, cid;
     ImageView imageView, aslip;
-    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc;
+    TextView applyfor, aname, adate, afee, age, address, village, taluk, district, job, Mobile, mname, fname, adoc,
+    wdob,wmname,wfname,wnation,wjob,waddress;
     String job1, category,appid;
     EditText opinion;
     Button issue, reject;
@@ -61,6 +62,13 @@ public class ViewMrgApp extends AppCompatActivity {
         mname = findViewById(R.id.amname);
         fname = findViewById(R.id.afname);
         adoc = findViewById(R.id.adoc);
+
+        wdob=findViewById(R.id.wdob);
+        wmname=findViewById(R.id.wmname);
+        wfname=findViewById(R.id.wfname);
+        wnation=findViewById(R.id.wnation);
+        wjob=findViewById(R.id.wjob);
+        waddress=findViewById(R.id.waddress);
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,19 +101,25 @@ public class ViewMrgApp extends AppCompatActivity {
         });
         sp = getSharedPreferences("viewApp", Context.MODE_PRIVATE);
 
-        applyfor.setText(":\t" + sp.getString("name",""));
-        adate.setText(":\t" + sp.getString("sex",""));
-        afee.setText(":\t" + sp.getString("dob",""));
-        aname.setText(":\t" + sp.getString("dod",""));
+        applyfor.setText(":\t" + sp.getString("hname",""));
+        adate.setText(":\t" + sp.getString("hsex",""));
+        afee.setText(":\t" + sp.getString("hdob",""));
+        aname.setText(":\t" + sp.getString("dom",""));
         age.setText(":\t" + sp.getString("place",""));
         fname.setText(":\t" +  sp.getString("dor",""));
-        mname.setText(":\t" +  sp.getString("mname",""));
-        Mobile.setText(":\t" +  sp.getString("fname",""));
-        address.setText(":\t" +  sp.getString("Address",""));
-        village.setText(":\t" +  sp.getString("dtime",""));
-        taluk.setText(":\t" +  sp.getString("dreason",""));
-//                district.setText(":\t" + response.body().getDistrict());
-//                job.setText(":\t" + response.body().getJob());
+        mname.setText(":\t" +  sp.getString("hmname",""));
+        Mobile.setText(":\t" +  sp.getString("hfname",""));
+        address.setText(":\t" +  sp.getString("hnation",""));
+        village.setText(":\t" +  sp.getString("hjob",""));
+        taluk.setText(":\t" +  sp.getString("haddress",""));
+                district.setText(":\t" + sp.getString("wname",""));
+                job.setText(":\t" + sp.getString("wsex",""));
+        wdob.setText(":\t" + sp.getString("wdob",""));
+        wmname.setText(":\t" + sp.getString("wmname",""));
+        wfname.setText(":\t" + sp.getString("wfname",""));
+        wnation.setText(":\t" + sp.getString("wnation",""));
+        wjob.setText(":\t" + sp.getString("wjob",""));
+        waddress.setText(":\t" + sp.getString("waddress",""));
 //                job1 = response.body().getJob();
 
 //                applyfor.setText(":\t" + response.body().getCName());
@@ -116,23 +130,30 @@ public class ViewMrgApp extends AppCompatActivity {
 //                appid=response.body().getAppId();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] imageBytes = baos.toByteArray();
-        imageBytes = Base64.decode(sp.getString("pic",""), Base64.DEFAULT);
+        imageBytes = Base64.decode(sp.getString("hpic",""), Base64.DEFAULT);
         Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         imageView.setImageBitmap(decodedImage);
-        appid=sp.getString("did","");
+
+
+        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+        byte[] imageBytes1 = baos1.toByteArray();
+        imageBytes1 = Base64.decode(sp.getString("wpic",""), Base64.DEFAULT);
+        Bitmap decodedImage1 = BitmapFactory.decodeByteArray(imageBytes1, 0, imageBytes1.length);
+        aslip.setImageBitmap(decodedImage1);
+        appid=sp.getString("mid","");
 
 
     }
 
     private void makeDecision() {
         ApiInterface apiinterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<login> call = apiinterface.checkuserApproval("ApprovalDeath", category,appid,opinion.getText().toString());
+        Call<login> call = apiinterface.checkuserApproval("ApprovalMrg", category,appid,opinion.getText().toString());
         call.enqueue(new Callback<login>() {
             @Override
             public void onResponse(Call<login> call, Response<login> response) {
                 Log.d("@@",response.body().getMessage());
                 Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),DeathAppliedList.class));
+                startActivity(new Intent(getApplicationContext(),MrgAppliedList.class));
                 finish();
             }
 

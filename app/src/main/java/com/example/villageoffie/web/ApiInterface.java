@@ -2,6 +2,11 @@ package com.example.villageoffie.web;
 
 import androidx.cardview.widget.CardView;
 
+import com.example.villageoffie.pojo.Permitpojo;
+import com.example.villageoffie.pojo.TradePojo;
+import com.example.villageoffie.pojo.Viewbirthpojo;
+import com.example.villageoffie.pojo.Viewdeathpojo;
+import com.example.villageoffie.pojo.Viewmrgpojo;
 import com.example.villageoffie.pojo.login;
 import com.example.villageoffie.pojo.reg;
 import com.example.villageoffie.pojo.spinnerresponse;
@@ -134,6 +139,18 @@ Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query(
     Call<List<spinnerresponse>>spinner(@Query("key") String key);
     @GET("civil.php")
     Call<viewAppli>getAppli(@Query("key") String key);
+    @GET("civil.php")
+    Call<Viewbirthpojo>getBirth(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+    @GET("civil.php")
+    Call<Viewdeathpojo>getDeath(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+    @GET("civil.php")
+    Call<Viewmrgpojo>getmrg(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+
+    @GET("civil.php")
+    Call<Permitpojo>getpermit(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+    @GET("civil.php")
+    Call<TradePojo>getTrade(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+
 }
 
 

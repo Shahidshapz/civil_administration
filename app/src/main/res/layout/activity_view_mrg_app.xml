@@ -38,7 +38,7 @@
                     android:textColor="#f00"
                     android:textSize="15dp"
                     android:layout_height="wrap_content"
-                    android:text=" Name" />
+                    android:text=" Husbands Name" />
 
                 <TextView
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:text="dob" />
+                    android:text="Date of birth" />
 
                 <TextView
 
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:text="Date of death" />
+                    android:text="Date of Marrige" />
 
                 <TextView
 
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:text="Place of Death" />
+                    android:text="Place" />
 
                 <TextView
 
@@ -88,7 +88,7 @@
                     android:textSize="15dp"
 
                     android:layout_height="wrap_content"
-                    android:text="Mother Name" />
+                    android:text="Hus Mother Name" />
 
                 <TextView
 
@@ -97,14 +97,32 @@
                     android:textColor="#f00"
 
                     android:textSize="15dp"
-                    android:text="Father name" />
+                    android:text="Hus Father name" />
 
                 <TextView
 
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
                     android:textColor="#f00"
                     android:textSize="15dp"
+                    android:text="Nationality" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="Job" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+
+                    android:textSize="15dp"
+                    android:layout_height="100dp"
                     android:text="Address" />
 
                 <TextView
@@ -114,33 +132,50 @@
                     android:textSize="15dp"
 
                     android:layout_height="wrap_content"
-                    android:text="Death time" />
+                    android:text="Wife Name" />
 
                 <TextView
-
                     android:layout_width="match_parent"
                     android:textColor="#f00"
-
                     android:textSize="15dp"
                     android:layout_height="wrap_content"
-                    android:text="Death Reasonj" />
-
+                    android:text="Sex" />
                 <TextView
-
                     android:layout_width="match_parent"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
-                    android:text="District" />
-
+                    android:text="Date of Birth" />
                 <TextView
                     android:layout_width="match_parent"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:text="wife Mothers Name" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="wife Father name" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nationality" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
                     android:layout_height="wrap_content"
                     android:text="Job" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="100dp"
+                    android:text="address" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,7 +252,7 @@
                 <TextView
                     android:id="@+id/aaddress"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
                     android:textColor="#f00"
 
                     android:text="Apply for" />
@@ -237,7 +272,7 @@
                     android:textColor="#f00"
 
                     android:textSize="15dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:text="Apply for" />
 
                 <TextView
@@ -245,7 +280,7 @@
                     android:layout_width="match_parent"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:visibility="gone"
+
                     android:layout_height="wrap_content"
                     android:text="Apply for" />
 
@@ -254,9 +289,51 @@
                     android:layout_width="match_parent"
                     android:textColor="#f00"
                     android:textSize="15dp"
-                    android:visibility="gone"
+
                     android:layout_height="wrap_content"
                     android:text="Apply for" />
+                <TextView
+                    android:id="@+id/wdob"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="Date of Birth" />
+                <TextView
+                    android:id="@+id/wmname"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="wife Mothers Name" />
+                <TextView
+                    android:id="@+id/wfname"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="wife Father name" />
+                <TextView
+                    android:id="@+id/wnation"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nationality" />
+                <TextView
+                    android:id="@+id/wjob"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:text="Job" />
+                <TextView
+                    android:id="@+id/waddress"
+                    android:layout_width="match_parent"
+                    android:textColor="#f00"
+                    android:textSize="15dp"
+                    android:layout_height="100dp"
+                    android:text="address" />
             </LinearLayout>
         </LinearLayout>
 

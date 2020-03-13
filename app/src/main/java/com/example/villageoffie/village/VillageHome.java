@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
+import com.example.villageoffie.userpackage.ViewBuildingPermit;
+import com.example.villageoffie.userpackage.ViewTradeLisence;
 
 public class VillageHome extends AppCompatActivity {
     TextView vbp, vtl,vbcer,vdcer,vmrg,vbtax,vptax;
@@ -80,13 +82,13 @@ if(type.equals("Permission_Approval_officer")){
         vbtax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+                startActivity(new Intent(getApplicationContext(), ViewTradeLisence.class));
             }
         });
         vptax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TradeAppliedList.class));
+                startActivity(new Intent(getApplicationContext(), ViewBuildingPermit.class));
             }
         });
 

@@ -17,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".village.ViewMrgApp"></activity>
+        <activity android:name=".userpackage.ViewBuildingPermit"></activity>
+        <activity android:name=".userpackage.ViewTradeLisence" />
+        <activity android:name=".userpackage.ViewmrgCer" />
+        <activity android:name=".userpackage.ViewDeathCer" />
+        <activity android:name=".village.ViewMrgApp" />
         <activity android:name=".village.ViewDeathApp" />
         <activity android:name=".village.ViewBirthApp" />
         <activity android:name=".village.MrgAppliedList" />
