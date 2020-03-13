@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".userpackage.ViewBuildingPermit"></activity>
+        <activity android:name=".village.ApproveProfessionalTax"></activity>
+        <activity android:name=".village.ApproveBuildingTax" />
+        <activity android:name=".userpackage.TaxpayingView" />
+        <activity android:name=".userpackage.ViewMyShop" />
+        <activity android:name=".userpackage.ViewMyProperty" />
+        <activity android:name=".userpackage.ViewBuildingPermit" />
         <activity android:name=".userpackage.ViewTradeLisence" />
         <activity android:name=".userpackage.ViewmrgCer" />
         <activity android:name=".userpackage.ViewDeathCer" />

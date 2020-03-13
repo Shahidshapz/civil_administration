@@ -4,6 +4,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Permitpojo {
+    @SerializedName("message")
+    @Expose
+    private String message;
+    @SerializedName("amount")
+    @Expose
+    private String amount;
+    @SerializedName("payid")
+    @Expose
+    private String payid;
+    @SerializedName("pdate")
+    @Expose
+    private String pdate;
     @SerializedName("buildingid")
     @Expose
     private String buildingid;
@@ -31,6 +43,38 @@ public class Permitpojo {
     @SerializedName("status")
     @Expose
     private String status;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getPayid() {
+        return payid;
+    }
+
+    public void setPayid(String payid) {
+        this.payid = payid;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getPdate() {
+        return pdate;
+    }
+
+    public void setPdate(String pdate) {
+        this.pdate = pdate;
+    }
 
     public String getBuildingid() {
         return buildingid;

@@ -4,6 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TradePojo {
+    @SerializedName("payid")
+    @Expose
+    private String payid;
+    @SerializedName("amount")
+    @Expose
+    private String amount;
+    @SerializedName("pdate")
+    @Expose
+    private String pdate;
     @SerializedName("tid")
     @Expose
     private String tid;
@@ -37,6 +46,30 @@ public class TradePojo {
     @SerializedName("status")
     @Expose
     private String status;
+
+    public String getPayid() {
+        return payid;
+    }
+
+    public void setPayid(String payid) {
+        this.payid = payid;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getPdate() {
+        return pdate;
+    }
+
+    public void setPdate(String pdate) {
+        this.pdate = pdate;
+    }
 
     public String getTid() {
         return tid;

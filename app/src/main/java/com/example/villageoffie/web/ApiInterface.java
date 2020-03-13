@@ -78,6 +78,9 @@ Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query(
 
     @GET("civil.php")
     Call<viewuser>userview(@Query("key") String key,@Query("userid") String id);
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<login>approvetax(@Field("key") String key,@Field("pid") String uid);
 
 
     @FormUrlEncoded
@@ -125,6 +128,11 @@ Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query(
                          @Field("spur") String cid,@Field("sowner") String name,
                          @Field("swno") String sslip,@Field("sbno") String date,@Field("saddress") String dat2e,@Field("adate") String date2);
 
+    @FormUrlEncoded
+    @POST("civil.php")
+    Call<login> paytax(@Field("key") String token,@Field("uid") String type,
+                            @Field("id") String userid1, @Field("type") String date,
+                       @Field("amount") String amt, @Field("date") String dd);
 
     @FormUrlEncoded
     @POST("civil.php")
@@ -150,7 +158,15 @@ Call<reg>certficateedit(@Query("key") String key,@Query("cid") String id,@Query(
     Call<Permitpojo>getpermit(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
     @GET("civil.php")
     Call<TradePojo>getTrade(@Query("key") String key, @Query("uid") String uid, @Query("date") String date);
+    @GET("civil.php")
+    Call<List<Permitpojo>>ViewMyBuild(@Query("key") String key,@Query("uid") String uid);
+    @GET("civil.php")
+    Call<List<TradePojo>>gettrade(@Query("key") String key,@Query("uid") String uid);
 
+    @GET("civil.php")
+    Call<List<Permitpojo>>viewbtax(@Query("key") String key,@Query("type") String type);
+    @GET("civil.php")
+    Call<List<TradePojo>>Viewptax(@Query("key") String key,@Query("type") String type);
 }
 
 

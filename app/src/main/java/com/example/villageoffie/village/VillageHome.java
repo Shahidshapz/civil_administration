@@ -82,13 +82,13 @@ if(type.equals("Permission_Approval_officer")){
         vbtax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ViewTradeLisence.class));
+                startActivity(new Intent(getApplicationContext(), ApproveBuildingTax.class));
             }
         });
         vptax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ViewBuildingPermit.class));
+                startActivity(new Intent(getApplicationContext(), ApproveProfessionalTax.class));
             }
         });
 

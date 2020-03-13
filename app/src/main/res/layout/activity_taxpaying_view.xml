@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".userpackage.TaxpayingView">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pay Tax"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="#000"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/cno"
+            android:hint="Card Number"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/cvv"
+            android:hint="cvv"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit1"
+            android:id="@+id/amt"
+            android:hint="Amount"
+            android:layout_margin="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit"
+            android:id="@+id/time"
+            android:layout_gravity="center"
+            android:text="PayNow"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+</LinearLayout>

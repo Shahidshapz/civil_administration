@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".userpackage.TaxPay">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAppli"
+    <TextView
+        android:id="@+id/pbt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="107dp" />
-</FrameLayout>
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="Pay Building Tax" />
+    <TextView
+        android:id="@+id/ppt"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="#126324"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/edit1"
+        android:layout_margin="25dp"
+        android:textSize="20dp"
+        android:text="Pay Professional Tax" />
+</LinearLayout>
