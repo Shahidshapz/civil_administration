@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.villageoffie.Others.Validations;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
 import com.example.villageoffie.web.ApiClient;
@@ -55,6 +56,17 @@ public class BuildingPermission extends AppCompatActivity {
 
                 // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
 
+                if (name.getText().toString().isEmpty()) {
+                    name.setError("Please enter owner name");
+                } else if (sex.getText().toString().isEmpty()) {
+                    sex.setError("Please enter no of rooms");
+                } else if (dob.getText().toString().isEmpty()) {
+                    dob.setError("Please enter total Squarefeet");
+                }
+                else if (btime.getText().toString().isEmpty()) {
+                    btime.setError("Please enter address");
+                }
+               else{
                 ApiInterface apiService =
                         ApiClient.getClient().create(ApiInterface.class);
                 Call<reg> call = apiService.applicatin3("application3", userid, name.getText().toString(), sex.getText().toString(),
@@ -72,7 +84,7 @@ public class BuildingPermission extends AppCompatActivity {
                         Toast.makeText(BuildingPermission.this, t + "", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
+            }}
         });
     }
     @Override

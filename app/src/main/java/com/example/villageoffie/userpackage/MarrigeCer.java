@@ -150,27 +150,85 @@ public class MarrigeCer extends AppCompatActivity {
 
                 // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
 
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
-                Call<reg> call = apiService.applicatin2("application2", userid,name.getText().toString(),sex.getText().toString(),
-                        dob.getText().toString(),btime.getText().toString(),place.getText().toString(),dor.getText().toString(),
-                        mname.getText().toString(),fname.getText().toString(),national.getText().toString(),job.getText().toString(),address.getText().toString(),
-                        wname.getText().toString(), wsex.getText().toString(), wdob.getText().toString(), wmname.getText().toString(), wfname.getText().toString(),
-                        wnational.getText().toString(), wjob.getText().toString(), waddress.getText().toString(),encodedImage,encodedImage1);
-                call.enqueue(new Callback<reg>() {
-                    @Override
-                    public void onResponse(Call<reg> call, Response<reg> response) {
-                        Log.d("@@",response.body().getMessage());
-                        Toast.makeText(MarrigeCer.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserHome.class));
-                        finish();
-                    }
+                if (name.getText().toString().isEmpty()) {
+                    name.setError("Please enter Husband name");
+                } else if (sex.getText().toString().isEmpty()) {
+                    sex.setError("Please enter sex");
+                } else if (dob.getText().toString().isEmpty()) {
+                    dob.setError("Please enter date of birth");
+                }
+                else if (btime.getText().toString().isEmpty()) {
+                    btime.setError("Please enter Marriage date");
+                }else if (place.getText().toString().isEmpty()) {
+                    place.setError("Please place of marriage");
+                }
+                else if (dor.getText().toString().isEmpty()) {
+                    dor.setError("Please enter date of registration");
+                }
+               else if (mname.getText().toString().isEmpty()) {
+                    mname.setError("Please enter mother name");
+                }
+                else if (fname.getText().toString().isEmpty()) {
+                    fname.setError("Please enter father name");
+                }
+                else if (national.getText().toString().isEmpty()) {
+                    national.setError("Please enter nationality");
+                }
+                else if (job.getText().toString().isEmpty()) {
+                    job.setError("Please enter Job");
+                }
+                else if (address.getText().toString().isEmpty()) {
+                    address.setError("Please enter address");
+                }
 
-                    @Override
-                    public void onFailure(Call<reg> call, Throwable t) {
-                        Toast.makeText(MarrigeCer.this, t + "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+               else if (wname.getText().toString().isEmpty()) {
+                    wname.setError("Please enter wife name");
+                } else if (wsex.getText().toString().isEmpty()) {
+                    wsex.setError("Please enter sex");
+                } else if (wdob.getText().toString().isEmpty()) {
+                    wdob.setError("Please enter date of birth");
+                }
+
+                else if (wmname.getText().toString().isEmpty()) {
+                    wmname.setError("Please enter mother name");
+                }
+                else if (wfname.getText().toString().isEmpty()) {
+                    wfname.setError("Please enter father name");
+                }
+                else if (wnational.getText().toString().isEmpty()) {
+                    wnational.setError("Please enter nationality");
+                }
+                else if (wjob.getText().toString().isEmpty()) {
+                    wjob.setError("Please enter Job");
+                }
+                else if (waddress.getText().toString().isEmpty()) {
+                    waddress.setError("Please enter address");
+                }
+                else {
+
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
+                    Call<reg> call = apiService.applicatin2("application2", userid, name.getText().toString(), sex.getText().toString(),
+                            dob.getText().toString(), btime.getText().toString(), place.getText().toString(), dor.getText().toString(),
+                            mname.getText().toString(), fname.getText().toString(), national.getText().toString(), job.getText().toString(), address.getText().toString(),
+                            wname.getText().toString(), wsex.getText().toString(), wdob.getText().toString(), wmname.getText().toString(), wfname.getText().toString(),
+                            wnational.getText().toString(), wjob.getText().toString(), waddress.getText().toString(), encodedImage, encodedImage1);
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Log.d("@@", response.body().getMessage());
+                            Toast.makeText(MarrigeCer.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), UserHome.class));
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(MarrigeCer.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 
@@ -337,7 +395,7 @@ public class MarrigeCer extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+      //  datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
     private void datePicker1() {
@@ -373,7 +431,7 @@ public class MarrigeCer extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+      //  datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
     private void datePicker2() {
@@ -409,7 +467,7 @@ public class MarrigeCer extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+       // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
 

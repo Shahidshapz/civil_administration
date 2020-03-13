@@ -49,6 +49,7 @@ public class DeathCer extends AppCompatActivity {
         mname=findViewById(R.id.mname);
         fname=findViewById(R.id.fname);
         address=findViewById(R.id.address);
+
         apply=findViewById(R.id.btnapply);
         dob.setFocusable(false);
         btime.setFocusable(false);
@@ -78,7 +79,35 @@ public class DeathCer extends AppCompatActivity {
                 String userid = sp.getString("userid", "");
 
                 // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
-
+                if (name.getText().toString().isEmpty()) {
+                    name.setError("Please enter  name");
+                } else if (sex.getText().toString().isEmpty()) {
+                    sex.setError("Please enter sex");
+                } else if (dob.getText().toString().isEmpty()) {
+                    dob.setError("Please enter date of birth");
+                }
+                else if (btime.getText().toString().isEmpty()) {
+                    btime.setError("Please enter birth time");
+                }else if (place.getText().toString().isEmpty()) {
+                    place.setError("Please enter birth place");
+                }
+              else if (dor.getText().toString().isEmpty()) {
+                    dor.setError("Please enter date of registration");
+                }
+                else if (dtime.getText().toString().isEmpty()) {
+                    dtime.setError("Please enter death time");
+                }else if (dreason.getText().toString().isEmpty()) {
+                    dreason.setError("Please enter death reason");
+                } else if (mname.getText().toString().isEmpty()) {
+                    mname.setError("Please enter mother name");
+                }
+                else if (fname.getText().toString().isEmpty()) {
+                    fname.setError("Please enter father name");
+                }
+                else if (address.getText().toString().isEmpty()) {
+                    address.setError("Please enter address");
+                }
+                else{
                 ApiInterface apiService =
                         ApiClient.getClient().create(ApiInterface.class);
                 Call<reg> call = apiService.applicatin1("application1", userid,name.getText().toString(),sex.getText().toString(),
@@ -97,7 +126,7 @@ public class DeathCer extends AppCompatActivity {
                         Toast.makeText(DeathCer.this, t + "", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
+            }}
         });
 
     }
@@ -134,7 +163,7 @@ public class DeathCer extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
 

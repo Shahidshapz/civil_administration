@@ -94,28 +94,28 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
         });
 
 
-      alertbox.setNegativeButton("edit", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            SharedPreferences sp= context.getSharedPreferences("village", context.MODE_PRIVATE);
-            SharedPreferences.Editor ed = sp.edit();
-            ed.putString("vname", s.getVName());
-            ed.putString("vtaluk", s.getVTaluk());
-            ed.putString("vdistrict", s.getVDistrict());
-            ed.putString("vstate", s.getVState());
-            ed.putString("vplace", s.getVPlace());
-            ed.putString("vpin", s.getVPin());
-            ed.putString("vmob",s.getVMobile());
-            ed.putString("vid",s.getVId());
-            ed.commit();
-            Intent i = new Intent(context, EditVillage.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            context.startActivity(i);
-
-
-        }
-    });
-        alertbox.show();
+//      alertbox.setNegativeButton("edit", new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            SharedPreferences sp= context.getSharedPreferences("village", context.MODE_PRIVATE);
+//            SharedPreferences.Editor ed = sp.edit();
+//            ed.putString("vname", s.getVName());
+//            ed.putString("vtaluk", s.getVTaluk());
+//            ed.putString("vdistrict", s.getVDistrict());
+//            ed.putString("vstate", s.getVState());
+//            ed.putString("vplace", s.getVPlace());
+//            ed.putString("vpin", s.getVPin());
+//            ed.putString("vmob",s.getVMobile());
+//            ed.putString("vid",s.getVId());
+//            ed.commit();
+//            Intent i = new Intent(context, EditVillage.class);
+//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            context.startActivity(i);
+//
+//
+//        }
+//    });
+    //   alertbox.show();
 }
     });
 

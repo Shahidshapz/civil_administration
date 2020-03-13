@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.villageoffie.Others.Login;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.village.Validation;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -41,24 +42,33 @@ cid=sp.getString("cid","");
         Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-                Call<reg> call = apiInterface.certficateedit("editcertificate",cid,cname.getText().toString(),creq.getText().toString(),cfee.getText().toString());
-            call.enqueue(new Callback<reg>() {
-                @Override
-                public void onResponse(Call<reg> call, Response<reg> response) {
-                    Toast.makeText(EditCertificate.this, "edited", Toast.LENGTH_SHORT).show();
-                    Intent i=new Intent(getApplicationContext(), ViewCertificates.class);
-                    startActivity(i);
-                }
+                if (cname.getText().toString().isEmpty()) {
+                    cname.setError("Please enter your certificatee name");
+                } else if (creq.getText().toString().isEmpty()) {
+                    creq.setError("Please enter certificate Requirements");
+                } else if (cfee.getText().toString().isEmpty()) {
+                    cfee.setError("Please enter certificate fee");
+                } else {
+                    ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+                    Call<reg> call = apiInterface.certficateedit("editcertificate", cid, cname.getText().toString(), creq.getText().toString(), cfee.getText().toString());
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Toast.makeText(EditCertificate.this, "edited", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), ViewCertificates.class);
+                            startActivity(i);
+                        }
 
-                @Override
-                public void onFailure(Call<reg> call, Throwable t) {
-                    Toast.makeText(EditCertificate.this, t+"", Toast.LENGTH_SHORT).show();
-                }
-            });
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(EditCertificate.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
+                }
             }
         });
+
 
 
     }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.villageoffie.Others.Validations;
 import com.example.villageoffie.R;
 import com.example.villageoffie.pojo.reg;
 import com.example.villageoffie.web.ApiClient;
@@ -49,6 +50,25 @@ String vid;
      Edit.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
+
+             if (vname.getText().toString().isEmpty()) {
+                 vname.setError("Please enter your village name");
+             } else if (taluk.getText().toString().isEmpty()) {
+                 taluk.setError("Please enter taluk name");
+             } else if (district.getText().toString().isEmpty()) {
+                 district.setError("Please enter district");
+             }
+             else if (state.getText().toString().isEmpty()) {
+                 state.setError("Please enter state");
+             }
+             else if (place.getText().toString().isEmpty()) {
+                 place.setError("Please enter your place");
+             }
+             else if (pin.getText().toString().isEmpty()) {
+                 pin.setError("Please enter pincode");
+             } else if ((mob.getText().toString().isEmpty() || !mob.getText().toString().matches(Validations.mobile)))
+             { mob.setError("please enter valid contact number");
+             }else{
              ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
              Call<reg> call = apiInterface.villageedit("editvillage",vid,vname.getText().toString(),taluk.getText().toString(),
              district.getText().toString(),state.getText().toString(),place.getText().toString(),pin.getText().toString(),mob.getText().toString()
@@ -66,7 +86,7 @@ String vid;
                      Toast.makeText(EditVillage.this, t+"", Toast.LENGTH_SHORT).show();
                  }
              });
-         }
+         } }
      });
 
     }

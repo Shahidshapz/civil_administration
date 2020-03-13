@@ -16,7 +16,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.villageoffie.R;
+import com.example.villageoffie.adminpackage.AddVillage;
 import com.example.villageoffie.pojo.reg;
+import com.example.villageoffie.village.Validation;
 import com.example.villageoffie.web.ApiClient;
 import com.example.villageoffie.web.ApiInterface;
 
@@ -76,24 +78,48 @@ public class BirtCer extends AppCompatActivity {
 
                 // Toast.makeText(this, cname, Toast.LENGTH_SHORT).show();
 
-                ApiInterface apiService =
-                        ApiClient.getClient().create(ApiInterface.class);
-                Call<reg> call = apiService.applicatin("application", userid, name.getText().toString(), sex.getText().toString(),
-                        dob.getText().toString(), btime.getText().toString(), place.getText().toString(), dor.getText().toString(),
-                        mname.getText().toString(), fname.getText().toString(), address.getText().toString());
-                call.enqueue(new Callback<reg>() {
-                    @Override
-                    public void onResponse(Call<reg> call, Response<reg> response) {
-                        Toast.makeText(BirtCer.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserHome.class));
-                        finish();
-                    }
+                if (name.getText().toString().isEmpty() || !name.getText().toString().matches(Validation.text)) {
+                    name.setError("Please enter your name");
+                } else if (sex.getText().toString().isEmpty()) {
+                    sex.setError("Please enter your sex");
+                } else if (dob.getText().toString().isEmpty()) {
+                    dob.setError("Please enter your date of birth");
+                } else if (btime.getText().toString().isEmpty()) {
+                    btime.setError("Please enter your birth time");
+                } else if (place.getText().toString().isEmpty()) {
+                    place.setError("Please enter your birth place");
+                }else if (dor.getText().toString().isEmpty()) {
+                    dor.setError("Please enter date of registration");
+                }
+                else if (mname.getText().toString().isEmpty()) {
+                    mname.setError("Please enter your mother name");
+                }
+                else if (fname.getText().toString().isEmpty()) {
+                    fname.setError("Please enter your father name");
+                }
+                else if (address.getText().toString().isEmpty()) {
+                    address.setError("Please enter perment address");
+                }
+                else {
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
+                    Call<reg> call = apiService.applicatin("application", userid, name.getText().toString(), sex.getText().toString(),
+                            dob.getText().toString(), btime.getText().toString(), place.getText().toString(), dor.getText().toString(),
+                            mname.getText().toString(), fname.getText().toString(), address.getText().toString());
+                    call.enqueue(new Callback<reg>() {
+                        @Override
+                        public void onResponse(Call<reg> call, Response<reg> response) {
+                            Toast.makeText(BirtCer.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), UserHome.class));
+                            finish();
+                        }
 
-                    @Override
-                    public void onFailure(Call<reg> call, Throwable t) {
-                        Toast.makeText(BirtCer.this, t + "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<reg> call, Throwable t) {
+                            Toast.makeText(BirtCer.this, t + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
     }
@@ -131,7 +157,7 @@ public class BirtCer extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+       // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
 
